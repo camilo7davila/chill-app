@@ -1,1 +1,58 @@
+@import '~@angular/material/theming';
+@import './assets/styles/theme/material-theme.scss';
+
+// Fuentes
+@import './assets/styles/theme/font.scss';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$chill-user-primary: mat-palette($mat-primary-alianza, 900);
+$chill-user-accent: mat-palette($mat-green-alianza, 500);
+
+$chill-user-warn: mat-palette($mat-green-alianza, 500);
+
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$chill-user-theme: mat-light-theme((
+  color: (
+    primary: $chill-user-primary,
+    accent: $chill-user-accent,
+    warn: $chill-user-warn
+  )
+));
+$chill-user-typography: mat-typography-config($font-family: '$f-avenir');
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($chill-user-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+.mat-typography {
+  font-family: mat-font-family($chill-user-typography, body-1);
+  font-size: mat-font-size($chill-user-typography, body-1);
+  line-height: mat-line-height($chill-user-typography, body-1);
+
+  h1,
+  h2,
+  h3 {
+    font-family: mat-font-family($chill-user-typography, body-1);
+  }
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "$f-avenir", sans-serif; }
+
+* {
+  font-family: '$f-avenir'
+}
