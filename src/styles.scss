@@ -1,6 +1,12 @@
 @import '~@angular/material/theming';
 @import './assets/styles/theme/material-theme.scss';
 
+//Mixins
+@import './assets/styles/mixins/font-style.scss';
+
+//Colors
+@import './assets/styles/theme/variables.scss';
+
 // Fuentes
 @import './assets/styles/theme/font.scss';
 // Plus imports for other components in your app.
@@ -50,9 +56,14 @@ $chill-user-typography: mat-typography-config($font-family: '$f-avenir');
 }
 
 
-html, body { height: 100%; }
+html, body { height: 100%; font-size: 10px; }
 body { margin: 0; font-family: "$f-avenir", sans-serif; }
 
 * {
   font-family: '$f-avenir'
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
 }

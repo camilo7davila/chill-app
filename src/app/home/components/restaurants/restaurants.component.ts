@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Restaurant } from 'src/app/core/interfaces/restaurant.interface';
+import { RestaurantsService } from 'src/app/core/services/restaurants/restaurants.service';
 
 @Component({
   selector: 'app-restaurants',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestaurantsComponent implements OnInit {
 
-  constructor() { }
+  public restaurants$ : Observable<Restaurant[]>
+
+  constructor(
+    private restaurantsServices: RestaurantsService
+  ) { }
 
   ngOnInit(): void {
+    this.restaurants$ = this.restaurantsServices.getAllRestaurants()
   }
 
+  goToUrl(data) {
+    console.log(data)
+  }
 }

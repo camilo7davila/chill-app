@@ -1,0 +1,11 @@
+@mixin font-style(
+  $color, $family, $size, $line: normal, $transform: initial, $spacing: normal
+) {
+  color: $color;
+  font-family: $family;
+  font-size: $size;
+  letter-spacing: $spacing;
+  line-height: $line;
+  position: relative;
+  text-transform: $transform;
+}

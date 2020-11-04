@@ -1,19 +1,13 @@
-<!-- <mat-form-field color="accent" class="example-full-width">
-  <mat-label>Favorite food</mat-label>
-  <input matInput placeholder="Ex. Pizza" value="Sushi">
-</mat-form-field> -->
-
-<section class="container">
-  <div class="item">item #1</div>
-  <div class="item">item #2</div>
-  <div class="item">item #3</div>
-  <div class="item">item #4</div>
-  <div class="item">item #5</div>
-  <div class="item">item #6</div>
-  <div class="item">item #7</div>
-  <div class="item">item #8</div>
-  <div class="item">item #9</div>
-  <div class="item">item #10</div>
-  <div class="item">item #11</div>
-  <div class="item">item #12</div>
+<section class="banner">
+  <img src="https://envato-shoebox-0.imgix.net/6fda/0209-b491-423c-a9a7-a874a02933b8/Food+product+%2811%29.jpg?auto=compress%2Cformat&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalign=center%2Cmiddle&markalpha=18&w=800&s=47a3141285b369bc2b42f7cea320bdb9" alt="banner">
 </section>
+
+<section class="middlesection">
+  <h1>Restaurantes chill</h1>
+  <p>Nuestros restaurantes</p>
+</section>
+
+<p style="font-size: 1rem;" *ngFor="let restaurant of (restaurants$ | async)">
+  {{restaurant.name}}
+  <button (click)="goToUrl(restaurant)" >selected</button>
+</p>
