@@ -21,7 +21,4 @@ export class RestaurantsComponent implements OnInit {
     this.restaurants$ = this.restaurantsServices.getAllRestaurants()
   }
 
-  goToUrl(data) {
-    console.log(data)
-  }
 }

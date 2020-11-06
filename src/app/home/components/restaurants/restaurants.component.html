@@ -12,6 +12,6 @@
   <ng-container *ngFor="let restaurant of (restaurants$ | async)">
     <!-- {{restaurant.name}}
     <button (click)="goToUrl(restaurant)" >selected</button> -->
-    <app-card-restaurants [restaurant1]="restaurant"></app-card-restaurants>
+    <app-card-restaurants [restaurant1]="restaurant" routerLink="/restaurant-categories"></app-card-restaurants>
   </ng-container>
 </section>

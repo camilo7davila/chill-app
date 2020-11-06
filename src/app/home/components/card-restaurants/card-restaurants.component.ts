@@ -9,7 +9,8 @@ import { Restaurant } from 'src/app/core/interfaces/restaurant.interface';
 export class CardRestaurantsComponent implements OnInit {
 
   @Input () restaurant1: Restaurant;
-
+  
+  
   constructor() { }
 
   ngOnInit(): void { 

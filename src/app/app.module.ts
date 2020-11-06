@@ -9,11 +9,12 @@ import { SharedModule } from './shared/shared.module';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { RestaurantCategoriesComponent } from './restaurant-categories/components/restaurant-categories/restaurant-categories.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
