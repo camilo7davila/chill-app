@@ -35,8 +35,6 @@ export class RestaurantsComponent implements OnInit {
         this.Categories =categories
         console.log(this.Categories)
       }) 
-  
-
 
   }
 
