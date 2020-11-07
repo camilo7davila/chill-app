@@ -9,16 +9,32 @@
   <p>Categorias</p>
 </section>
 <section>
-  <app-categories-restaurant *ngIf="Categories !== undefined " [categories]="Categories"></app-categories-restaurant>
+  <app-categories-restaurant 
+    *ngIf="Categories !== undefined" 
+    [categories]="Categories"
+    (categorySelected)="categorySelected($event)"></app-categories-restaurant>
 </section>
 <section class="middlesection">
   <p>Nuestros restaurantes</p>
 </section>
 
 <section class="container">
-  <ng-container *ngFor="let restaurant of restaurants">
-    <!-- {{restaurant.name}}
-    <button (click)="goToUrl(restaurant)" >selected</button> -->
-    <app-card-restaurants [restaurant1]="restaurant" routerLink="/restaurant-categories"></app-card-restaurants>
+  <ng-container *ngIf="!isFilter; else filtroActivo">
+    <ng-container *ngFor="let restaurant of restaurants">
+      <app-card-restaurants [restaurant1]="restaurant"></app-card-restaurants>
+    </ng-container>
   </ng-container>
+
+  <ng-template #filtroActivo>
+    <ng-container *ngFor="let restaurant of restaurantsFilter">
+      <app-card-restaurants [restaurant1]="restaurant"></app-card-restaurants>
+    </ng-container>
+  </ng-template>
 </section>
+
+<div *ngIf="isFilter && restaurantsFilter.length === 0">
+  <img
+    src="https://elements-cover-images-0.imgix.net/1ce90694-e592-46e9-8e4a-ea7a97437d19?auto=compress%2Cformat&fit=max&w=1170&s=f2f38115435af63822c936f557dd6114"
+    alt="no se encontro busqeuda">
+  <p>No se econtró restaurantes en esta categoria, por favor cambie sus criterios de busqueda</p>
+</div>

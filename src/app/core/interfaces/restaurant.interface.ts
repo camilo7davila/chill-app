@@ -9,8 +9,9 @@ export interface Restaurant {
 }
 
 export interface Categories {
-  active: boolean,
   description: string,
   image: string,
-  name: string
+  name: string,
+  active?: boolean,
+  id?: string
 }

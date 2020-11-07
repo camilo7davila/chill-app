@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Categories } from 'src/app/core/interfaces/restaurant.interface';
 
 @Component({
@@ -8,11 +8,16 @@ import { Categories } from 'src/app/core/interfaces/restaurant.interface';
 })
 export class CardCategoriesrestaurantComponent implements OnInit {
 
-  @Input () categorie1: Categories;
+  @Input () categorie: Categories;
+  @Output() selectCategory: EventEmitter<Categories> = new EventEmitter<Categories>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  selectedCategory() {
+    this.selectCategory.emit(this.categorie);
   }
 
 }
