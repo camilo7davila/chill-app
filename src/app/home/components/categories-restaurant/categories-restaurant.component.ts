@@ -13,7 +13,7 @@ export class CategoriesRestaurantComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('categoriasss',this.categories)
+    // console.log('categoriasss',this.categories)
   }
 
 }

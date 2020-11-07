@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Restaurant } from 'src/app/core/interfaces/restaurant.interface';
 import { RestaurantsService } from 'src/app/core/services/restaurants/restaurants.service';
 
@@ -33,7 +32,7 @@ export class RestaurantsComponent implements OnInit {
     this.categoriesRestaurantCategories.getAllCatergories()
       .subscribe(categories => {
         this.Categories =categories
-        console.log(this.Categories)
+        // console.log(this.Categories)
       }) 
 
   }
