@@ -1,0 +1,50 @@
+@import "../../../../assets/styles/mixins/font-style.scss";
+@import "../../../../assets/styles/theme/variables.scss";
+
+img {
+  width: inherit;
+  height: inherit;
+  border-radius: 5%;
+}
+
+img:hover {
+  // -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-box-shadow: 0px 0px 123px 32px rgba(240, 231, 240, 1);
+  -moz-box-shadow: 0px 0px 123px 32px rgba(240, 231, 240, 1);
+  box-shadow: 0px 0px 123px 32px rgba(240, 231, 240, 1);
+}
+
+.container_img {
+  width: 250px;
+  height: 150px;
+  border-radius: 5%;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5%;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: all 1s ease;
+  }
+  &::after:hover {
+    transform: scale(1.1);
+    -webkit-box-shadow: 0px 0px 123px 32px rgba(240, 231, 240, 1);
+    -moz-box-shadow: 0px 0px 123px 32px rgba(240, 231, 240, 1);
+    box-shadow: 0px 0px 123px 32px rgba(240, 231, 240, 1);
+  }
+}
+
+h3 {
+  position: relative;
+  top: -90px;
+  margin: 0;
+  text-align: center;
+  @include font-style($c-white-gray, "$f-avenir", 2rem,normal,uppercase);
+  text-transform: uppercase;
+
+}

@@ -1,15 +1,22 @@
-
 <section class="banner">
-  <img src="https://envato-shoebox-0.imgix.net/6fda/0209-b491-423c-a9a7-a874a02933b8/Food+product+%2811%29.jpg?auto=compress%2Cformat&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalign=center%2Cmiddle&markalpha=18&w=800&s=47a3141285b369bc2b42f7cea320bdb9" alt="banner">
+  <img
+    src="https://envato-shoebox-0.imgix.net/6fda/0209-b491-423c-a9a7-a874a02933b8/Food+product+%2811%29.jpg?auto=compress%2Cformat&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalign=center%2Cmiddle&markalpha=18&w=800&s=47a3141285b369bc2b42f7cea320bdb9"
+    alt="banner">
 </section>
 
 <section class="middlesection">
   <h1>Restaurantes chill</h1>
+  <p>Categorias</p>
+</section>
+<section>
+  <app-categories-restaurant *ngIf="Categories !== undefined " [categories]="Categories"></app-categories-restaurant>
+</section>
+<section class="middlesection">
   <p>Nuestros restaurantes</p>
 </section>
 
 <section class="container">
-  <ng-container *ngFor="let restaurant of (restaurants$ | async)">
+  <ng-container *ngFor="let restaurant of restaurants">
     <!-- {{restaurant.name}}
     <button (click)="goToUrl(restaurant)" >selected</button> -->
     <app-card-restaurants [restaurant1]="restaurant" routerLink="/restaurant-categories"></app-card-restaurants>

@@ -19,6 +19,6 @@ img:hover {
 .item{
     & h3 {
         text-align:  center;
-        @include font-style(black,'$f-avenir', 1.9rem)
+        @include font-style(black,'$f-avenir', 1.5rem)
     }
 }

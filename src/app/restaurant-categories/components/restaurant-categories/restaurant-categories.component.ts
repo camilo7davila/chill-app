@@ -9,6 +9,7 @@ import { RestaurantsService } from 'src/app/core/services/restaurants/restaurant
 })
 export class RestaurantCategoriesComponent implements OnInit {
 
+
   constructor(
     private route: ActivatedRoute,
     private restaurantService: RestaurantsService
@@ -20,6 +21,8 @@ export class RestaurantCategoriesComponent implements OnInit {
         console.log(data);
       })
     })
+
+
   }
 
 }

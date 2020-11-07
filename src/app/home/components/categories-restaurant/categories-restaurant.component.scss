@@ -1,0 +1,39 @@
+@import '../../../../assets/styles/mixins/font-style.scss';
+@import '../../../../assets/styles/theme/variables.scss';
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 25px;
+    height: auto;
+    margin: 10px auto;
+    justify-items: center;
+    // margin: 0px 0px 0px 0px;
+    overflow-x: auto;
+}
+.container::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.container::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background-color: $c-chill-red;
+    border-radius: 30px;
+    border: 2px solid white;
+}
+
+
+
+
+
+  @media screen and (max-width: 700px) {
+    .container {
+      grid-template-columns: repeat(5, 1fr);
+      // overflow-x: auto;
+      
+      // overflow: hidden;
+    }
+  }
