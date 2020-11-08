@@ -7,6 +7,9 @@
 <section class="container">
     <ng-container *ngFor="let categorie of categories" >
         <!-- {{categorie.name}} -->
-        <app-card-categoriesrestaurant [categorie1]="categorie"></app-card-categoriesrestaurant>
+        <app-card-categoriesrestaurant 
+            [categorie]="categorie"
+            (selectCategory)="showCategorySelected($event)"
+        ></app-card-categoriesrestaurant>
     </ng-container>
 </section>

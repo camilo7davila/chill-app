@@ -46,5 +46,15 @@ h3 {
   text-align: center;
   @include font-style($c-white-gray, "$f-avenir", 2rem,normal,uppercase);
   text-transform: uppercase;
+}
 
+.title-green, h3:active {
+  @include font-style($c-chill-green, "$f-avenir", 2rem,normal,uppercase);
+  transform: scale(1.2);
+  -moz-transform:    scale(1.2); /* Firefox */
+	-webkit-transform: scale(1.2); /* Webkit */
+	-o-transform:      scale(1.2); /* Opera */
+  -ms-transform:     scale(1.2); /* IE 9 */
+  transition: all 3s;
+  font-weight: bold;
 }

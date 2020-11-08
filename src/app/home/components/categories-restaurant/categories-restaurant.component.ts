@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Categories } from 'src/app/core/interfaces/restaurant.interface';
 
 @Component({
@@ -8,12 +8,17 @@ import { Categories } from 'src/app/core/interfaces/restaurant.interface';
 })
 export class CategoriesRestaurantComponent implements OnInit {
 
-  @Input () categories : Categories[]=[]; 
+  @Input() categories: Categories[] = [];
+  @Output() categorySelected: EventEmitter<Categories> = new EventEmitter<Categories>();
 
   constructor() { }
 
   ngOnInit(): void {
-    // console.log('categoriasss',this.categories)
+  }
+
+  showCategorySelected(event: Categories) {
+    this.categorySelected.emit(event)
+    this.categories = this.categories.map((category) =>  (event.id === category.id) ? {...category, active: true} : {...category, active: false}) 
   }
 
 }
