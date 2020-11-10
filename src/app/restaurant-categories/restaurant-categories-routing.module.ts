@@ -4,6 +4,10 @@ import { RestaurantCategoriesComponent } from './components/restaurant-categorie
 
 const routes: Routes = [
   {
+    path: '',
+    component:RestaurantCategoriesComponent
+  },
+  {
     path: ':idRestaurant',
     component:RestaurantCategoriesComponent
   }

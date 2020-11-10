@@ -11,7 +11,7 @@ import { Restaurant } from 'src/app/core/interfaces/restaurant.interface';
 })
 export class RestaurantCategoriesComponent implements OnInit {
 
-  public restaurantscategorie : Restaurant[]=[]
+  public restaurantsCategorie : Restaurant[]=[]
 
 
   constructor(
@@ -28,8 +28,8 @@ export class RestaurantCategoriesComponent implements OnInit {
     })
 
     this.restaurantscServices.getAllRestaurants().subscribe(restaurant =>{
-      this.restaurantscategorie = restaurant
-      console.log(this.restaurantscategorie);
+      this.restaurantsCategorie = restaurant
+      console.log(this.restaurantsCategorie);
     })
   
 

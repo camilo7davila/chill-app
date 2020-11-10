@@ -6,6 +6,7 @@ import { CategoriesRestaurantsService } from 'src/app/core/services/restaurants/
 import { map } from 'rxjs/operators';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { QrCodeService } from 'src/app/core/services/qrCode/qr-code.service';
+import { BranchesRestaurantService } from 'src/app/core/services/restaurants/branches-restaurant.service';
 
 
 @Component({
@@ -18,13 +19,17 @@ export class RestaurantsComponent implements OnInit {
 
   public restaurants: Restaurant[] = [];
   public restaurantsFilter: Restaurant[] = [];
-  public isFilter: boolean
+  public isFilter: boolean;
+  public showModal: boolean = false;
 
   public Categories: any;
+
+  public branchesFind: string
 
   constructor(
     private restaurantsServices: RestaurantsService,
     private categoriesRestaurantCategories: CategoriesRestaurantsService,
+    private BRS: BranchesRestaurantService,
     private qrCodeService: QrCodeService,
     private route: ActivatedRoute,
     private router: Router
@@ -37,6 +42,16 @@ export class RestaurantsComponent implements OnInit {
       const keysParams = Object.keys(params).length !== 0;
       keysParams ? this.redirectToBranches(params) : this.getDataRestaurants();
     })
+
+    this.BRS.getAllBranches().subscribe(data => console.log('sucursal',data))
+
+    this.BRS.getAllBranchesId().subscribe(data => console.log('idpruebasurcursal', data))
+
+
+    // .subscribe(restaurant => {
+      //     this.restaurants = restaurant
+      //   })
+
   }
 
   getDataRestaurants() {
@@ -58,7 +73,7 @@ export class RestaurantsComponent implements OnInit {
 
   redirectToBranches(params) {
     this.qrCodeService.getQrCodeById(params.qrcode).subscribe(qrCode => {
-      if(qrCode) {
+      if (qrCode) {
         this.router.navigate(['/restaurant', 'SXfHCGeCwpwH0bhwZcLd'])
       } else {
         this.getDataRestaurants();
@@ -82,6 +97,12 @@ export class RestaurantsComponent implements OnInit {
         return false;
       }
     })
+  }
+
+  showModalRestaurant(res) {
+    this.showModal = true
+     this.BRS.getAllBranches().subscribe(res => console.log('algo pasa',res)
+     )
   }
 
 }

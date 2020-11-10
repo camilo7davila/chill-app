@@ -15,3 +15,17 @@ export interface Categories {
   active?: boolean,
   id?: string
 }
+
+export interface Branches {
+  address?: string,
+  coordinates?: any,
+  createTable?: boolean,
+  experiences? : string[],
+  foodHallId?: string,
+  name: string,
+  restaurantId?: string,
+  state?: string,
+  tip?: number,
+  weekSchedule?: string[]
+
+}

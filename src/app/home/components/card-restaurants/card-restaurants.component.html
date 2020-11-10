@@ -1,7 +1,8 @@
 <div class="item">
     <img 
         [src]="restaurant1?.logoImage" 
-        alt="logo"   
+        alt="logo"
+        (click)="restaurantSelect()"   
     >
     <br>
     <h3>{{restaurant1?.name}}</h3>
