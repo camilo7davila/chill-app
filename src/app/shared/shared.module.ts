@@ -3,15 +3,18 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MaterialModule } from '../material/material.module';
+import { ModalRestaurantsComponent } from './components/modal-restaurants/modal-restaurants.component';
 
 @NgModule({
   declarations: [
     HeaderComponent, 
-    FooterComponent
+    FooterComponent,
+    ModalRestaurantsComponent,
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ModalRestaurantsComponent,
   ],
   imports: [
     CommonModule,

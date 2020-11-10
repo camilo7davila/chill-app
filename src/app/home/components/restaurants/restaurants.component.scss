@@ -1,6 +1,10 @@
 @import '../../../../assets/styles/mixins/font-style.scss';
 @import '../../../../assets/styles/theme/variables.scss';
 
+main {
+  position: relative;
+}
+
 .banner {
   height: 320px;
 }

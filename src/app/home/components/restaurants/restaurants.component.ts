@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { QrCodeService } from 'src/app/core/services/qrCode/qr-code.service';
 import { BranchesRestaurantService } from 'src/app/core/services/restaurants/branches-restaurant.service';
+import { ModalService } from 'src/app/core/services/modal/modal.service';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class RestaurantsComponent implements OnInit {
     private restaurantsServices: RestaurantsService,
     private categoriesRestaurantCategories: CategoriesRestaurantsService,
     private BRS: BranchesRestaurantService,
+    private modalService: ModalService,
     private qrCodeService: QrCodeService,
     private route: ActivatedRoute,
     private router: Router
@@ -100,9 +102,7 @@ export class RestaurantsComponent implements OnInit {
   }
 
   showModalRestaurant(res) {
-    this.showModal = true
-     this.BRS.getAllBranches().subscribe(res => console.log('algo pasa',res)
-     )
+    this.modalService.changeStateModal(res)
   }
 
 }

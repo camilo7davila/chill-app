@@ -8,7 +8,6 @@ import { CardRestaurantsComponent } from './components/card-restaurants/card-res
 import { MaterialModule } from '../material/material.module';
 import { CategoriesRestaurantComponent } from './components/categories-restaurant/categories-restaurant.component';
 import { CardCategoriesrestaurantComponent } from './components/card-categoriesrestaurant/card-categoriesrestaurant.component';
-import { ModalRestaurantsComponent } from './components/modal-restaurants/modal-restaurants.component';
 
 
 @NgModule({
@@ -16,7 +15,7 @@ import { ModalRestaurantsComponent } from './components/modal-restaurants/modal-
     RestaurantsComponent, 
     CardRestaurantsComponent, 
     CategoriesRestaurantComponent, 
-    CardCategoriesrestaurantComponent, ModalRestaurantsComponent, 
+    CardCategoriesrestaurantComponent,
   ],
   imports: [
     CommonModule,
