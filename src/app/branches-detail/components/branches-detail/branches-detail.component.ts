@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Params } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import { Branches, Restaurant } from 'src/app/core/interfaces/restaurant.interface';
 import { BranchesRestaurantService } from 'src/app/core/services/restaurants/branches-restaurant.service';
 
@@ -14,9 +14,11 @@ import { RestaurantsService } from 'src/app/core/services/restaurants/restaurant
 })
 export class BranchesDetailComponent implements OnInit {
 
+
   public branchRestaurant: Branches;
+  public idBranchRestaurant: Branches;
   public restaurant: Restaurant;
-  
+
 
   constructor(
     private route: ActivatedRoute,
@@ -35,16 +37,18 @@ export class BranchesDetailComponent implements OnInit {
     // });
 
     this.route.params.pipe(
-      switchMap(({idBranch}) => this.brancheRestaurantService.getBrachesDetail(idBranch)),
+      tap(({ idBranch }) => this.idBranchRestaurant = idBranch),
+      switchMap(({ idBranch }) => this.brancheRestaurantService.getBrachesDetail(idBranch)),
     ).subscribe((brachRestaurant) => {
-      this.restaurantService.getRestaurantById(brachRestaurant.restaurantId).subscribe((restaurant) =>{
+      this.restaurantService.getRestaurantById(brachRestaurant.restaurantId).subscribe((restaurant) => {
         this.branchRestaurant = brachRestaurant;
         this.restaurant = restaurant;
       })
     })
 
+
   }
 
- 
+
 
 }

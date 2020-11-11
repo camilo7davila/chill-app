@@ -20,7 +20,7 @@ export interface Branches {
   address?: string,
   coordinates?: any,
   createTable?: boolean,
-  experiences? : string[],
+  experiences?: string[],
   foodHallId?: string,
   name?: string,
   restaurantId?: string,
@@ -28,5 +28,12 @@ export interface Branches {
   tip?: number,
   weekSchedule?: string[];
   id?: string;
+}
 
+export interface BranchesMC{
+  backgroundImage?: string,
+  chillCategory?: boolean,
+  layoutImage?: string,
+  main?: number,
+  name?: string
 }

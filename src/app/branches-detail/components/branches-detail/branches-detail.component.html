@@ -9,12 +9,18 @@
             <h5 class="subtitle">{{branchRestaurant.address}}</h5>
         </div>
     </section>
-    <section>
-        <div>
-            izquierda - categorias
+
+    <section class="middlesection">
+        <p>Categorias</p>
+    </section>
+    
+    <section class= "grid">
+        <div *ngIf="idBranchRestaurant">
+            <app-branches-menu-categories [idBranchess]="idBranchRestaurant"></app-branches-menu-categories>
         </div>
-        <div>
-            derecha - menu
-        </div>
+    </section>
+
+    <section class="middlesection">
+        <p>Menu</p>
     </section>
 </main>

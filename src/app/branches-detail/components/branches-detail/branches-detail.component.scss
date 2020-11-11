@@ -1,5 +1,5 @@
-@import '../../../../assets/styles/mixins/font-style.scss';
-@import '../../../../assets/styles/theme/variables.scss';
+@import "../../../../assets/styles/mixins/font-style.scss";
+@import "../../../../assets/styles/theme/variables.scss";
 
 .restaurant__container {
     width: 100%;
@@ -28,3 +28,10 @@
         text-shadow: 0px 0px 25px rgba(0, 0, 0, 1);
     }
 }
+
+// .grid {
+//     display: grid;
+//     grid-template-columns: repeat(2, 1fr);
+//     // grid-template-columns: 200px auto;
+//     grid-gap: 5px;
+// }

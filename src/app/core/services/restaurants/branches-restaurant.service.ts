@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { Branches } from '../../interfaces/restaurant.interface';
+import { Branches, BranchesMC } from '../../interfaces/restaurant.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,7 @@ export class BranchesRestaurantService {
   }
 
   getAllBranchesByIdRestaurant(idRestaurant?: string) {
-    return this.afs.collection<Branches[]>('RestaurantBranches', ref => ref.where('restaurantId', "==", idRestaurant ))
+    return this.afs.collection<Branches[]>('RestaurantBranches', ref => ref.where('restaurantId', "==", idRestaurant))
       .snapshotChanges().pipe(
         map((actions) => actions.map(a => {
           const data = a.payload.doc.data() as Branches;
@@ -35,7 +35,13 @@ export class BranchesRestaurantService {
   }
 
   getBrachesDetail(idBranch: string): Observable<Branches> {
-    return this.afs.doc<Branches>('RestaurantBranches/'+ idBranch).valueChanges()
+    return this.afs.doc<Branches>('RestaurantBranches/' + idBranch).valueChanges()
+
+  }
+
+  getBrachesMenuCategories(idBranch: string): Observable<BranchesMC[]> {
+    return this.afs.collection<BranchesMC>('RestaurantBranches/' + idBranch + '/MenuCategories').valueChanges()
+
   }
 
 }
