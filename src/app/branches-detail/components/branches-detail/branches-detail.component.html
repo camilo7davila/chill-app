@@ -10,17 +10,10 @@
         </div>
     </section>
 
-    <section class="middlesection">
-        <p>Categorias</p>
-    </section>
-    
-    <section class= "grid">
-        <div *ngIf="idBranchRestaurant">
+    <section class="bottom__container">
+        <ng-container *ngIf="idBranchRestaurant">
             <app-branches-menu-categories [idBranchess]="idBranchRestaurant"></app-branches-menu-categories>
-        </div>
+        </ng-container>
     </section>
 
-    <section class="middlesection">
-        <p>Menu</p>
-    </section>
 </main>

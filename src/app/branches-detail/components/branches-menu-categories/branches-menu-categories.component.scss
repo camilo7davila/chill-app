@@ -1,13 +1,16 @@
 @import '../../../../assets/styles/mixins/font-style.scss';
 @import '../../../../assets/styles/theme/variables.scss';
 
-.container{
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 25px;
+.categories__container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    overflow-x: scroll;
     height: auto;
-    margin: 10px auto;
-    justify-items: center;
-    // margin: 0px 0px 0px 0px;
-    overflow-x: auto;
+
+    mat-card {
+        width: 200px;
+        height: 150px;
+    }
 }

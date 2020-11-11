@@ -29,9 +29,9 @@
     }
 }
 
-// .grid {
-//     display: grid;
-//     grid-template-columns: repeat(2, 1fr);
-//     // grid-template-columns: 200px auto;
-//     grid-gap: 5px;
-// }
+.bottom__container {
+    width: 1280px;
+    height: auto;
+    margin: 20px auto;
+    overflow-x: hidden;
+}
