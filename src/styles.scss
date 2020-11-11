@@ -74,3 +74,18 @@ body { margin: 0; font-family: "$f-avenir", sans-serif; }
 .pointer {
   cursor: pointer;
 }
+
+body::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+body::-webkit-scrollbar:vertical {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  // background-color:#FF0000;
+  background-color: $c-chill-red;
+  border-radius: 30px;
+  border: 2px solid white;
+}

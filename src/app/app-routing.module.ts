@@ -17,12 +17,8 @@ const routes: Routes = [
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       },
       {
-        path: 'restaurant',
-        loadChildren: () => import('./restaurant-categories/restaurant-categories.module').then(m => m.RestaurantCategoriesModule)
-      },
-      {
         path: 'sucursal',
-        loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+        loadChildren: () => import('./branches-detail/branches-detail.module').then(m => m.BranchesDetailModule)
       },
     ]
   },

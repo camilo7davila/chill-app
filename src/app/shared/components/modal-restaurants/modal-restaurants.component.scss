@@ -1,9 +1,9 @@
 .container-modal {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 100;
-	width:  100%;
+	width: 100%;
 	height: 100%;
 	background-color: rgba($color: #000000, $alpha: 0.7);
 	overflow: hidden;
@@ -14,4 +14,12 @@
 
 .card {
 	width: 350px;
+	position: relative;
+}
+
+.buttonX {
+	position: absolute;
+	top: -5px;
+	left: 330px;
+	border-radius: 50%;
 }

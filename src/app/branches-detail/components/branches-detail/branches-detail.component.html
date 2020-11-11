@@ -1,0 +1,20 @@
+<main>
+    <section class="restaurant__container">
+        <div 
+            class="restaurant__container--img"
+            *ngIf="restaurant"
+            [style.background-image]="'url('+ restaurant.backgroundImage +')'"
+        >
+            <h3 class="main-title">{{restaurant.name}}</h3>
+            <h5 class="subtitle">{{branchRestaurant.address}}</h5>
+        </div>
+    </section>
+    <section>
+        <div>
+            izquierda - categorias
+        </div>
+        <div>
+            derecha - menu
+        </div>
+    </section>
+</main>

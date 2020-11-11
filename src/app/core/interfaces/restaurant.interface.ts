@@ -22,10 +22,11 @@ export interface Branches {
   createTable?: boolean,
   experiences? : string[],
   foodHallId?: string,
-  name: string,
+  name?: string,
   restaurantId?: string,
   state?: string,
   tip?: number,
-  weekSchedule?: string[]
+  weekSchedule?: string[];
+  id?: string;
 
 }

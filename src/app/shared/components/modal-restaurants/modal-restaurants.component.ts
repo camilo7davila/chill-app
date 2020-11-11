@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Branches, Restaurant } from 'src/app/core/interfaces/restaurant.interface';
+import { Branches} from 'src/app/core/interfaces/restaurant.interface';
 import { ModalService } from 'src/app/core/services/modal/modal.service';
+import { BranchesRestaurantService } from 'src/app/core/services/restaurants/branches-restaurant.service';
 
 @Component({
   selector: 'app-modal-restaurants-components',
@@ -9,12 +10,24 @@ import { ModalService } from 'src/app/core/services/modal/modal.service';
 })
 export class ModalRestaurantsComponent implements OnInit {
 
+  public branchesFound: Branches []=[];
+
+
   constructor(
-    public modalService: ModalService
+    public modalService: ModalService,
+    public branchesService: BranchesRestaurantService
   ) { }
 
   ngOnInit(): void {
-    console.log('este es el id desde modal',this.modalService.getIdRestaurantSelected);
+    // console.log('este es el id desde modal',this.modalService.getIdRestaurantSelected);
+
+     this.branchesService.getAllBranchesByIdRestaurant(this.modalService.getIdRestaurantSelected)
+      .subscribe(data => {
+        this.branchesFound = data;
+
+      //  console.log('esto responde el where =>', data);
+        //  console.log('esta es la sucursal ', this.branchesFound);
+     })
   }
 
 }

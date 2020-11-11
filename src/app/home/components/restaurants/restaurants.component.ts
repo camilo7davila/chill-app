@@ -45,14 +45,14 @@ export class RestaurantsComponent implements OnInit {
       keysParams ? this.redirectToBranches(params) : this.getDataRestaurants();
     })
 
-    this.BRS.getAllBranches().subscribe(data => console.log('sucursal',data))
+    // this.BRS.getAllBranches().subscribe(data => console.log('sucursal',data))
 
-    this.BRS.getAllBranchesId().subscribe(data => console.log('idpruebasurcursal', data))
+    // this.BRS.getAllBranchesId().subscribe(data => console.log('idpruebasurcursal', data))
 
 
     // .subscribe(restaurant => {
-      //     this.restaurants = restaurant
-      //   })
+    //     this.restaurants = restaurant
+    //   })
 
   }
 
@@ -101,8 +101,8 @@ export class RestaurantsComponent implements OnInit {
     })
   }
 
-  showModalRestaurant(res) {
-    this.modalService.changeStateModal(res)
+  showModalRestaurant(idRestaurant) {
+    this.modalService.changeStateModal(idRestaurant)
   }
 
 }

@@ -45,7 +45,6 @@ h3 {
   margin: 0;
   text-align: center;
   @include font-style($c-white-gray, "$f-avenir", 2rem,normal,uppercase);
-  text-transform: uppercase;
 }
 
 .title-green, h3:active {
