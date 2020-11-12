@@ -49,6 +49,12 @@ export class BranchesDetailComponent implements OnInit {
 
   }
 
+  showModalMenu(data) {
+    console.log('loque le llego al padre',data);
+    
+    // this.modalService.changeStateModalMenu()
+  }
+
 
 
 }

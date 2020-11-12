@@ -11,7 +11,7 @@ import { BranchesMenuCategoriesComponent } from './components/branches-menu-cate
 @NgModule({
   declarations: [
     BranchesDetailComponent,
-    BranchesMenuCategoriesComponent
+    BranchesMenuCategoriesComponent,
   ],
   imports: [
     CommonModule,

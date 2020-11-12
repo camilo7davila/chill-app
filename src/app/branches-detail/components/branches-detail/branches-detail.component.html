@@ -12,7 +12,7 @@
 
     <section class="bottom__container">
         <ng-container *ngIf="idBranchRestaurant">
-            <app-branches-menu-categories [idBranchess]="idBranchRestaurant"></app-branches-menu-categories>
+            <app-branches-menu-categories [idBranchess]="idBranchRestaurant" (menuClick)="showModalMenu($event)"></app-branches-menu-categories>
         </ng-container>
     </section>
 

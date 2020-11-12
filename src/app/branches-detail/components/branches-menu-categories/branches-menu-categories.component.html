@@ -1,12 +1,32 @@
-<div class="categories__container">
-    <mat-card>Simple card</mat-card>
-    <mat-card>Simple card</mat-card>
-    <mat-card>Simple card</mat-card>
-    <mat-card>Simple card</mat-card>
-    <mat-card>Simple card</mat-card>
-    <mat-card>Simple card</mat-card>
-</div>
+<section>
+    <div class="categories__container">
+        <mat-card *ngFor="let categorie of menuCategories">
+            <img mat-card-image 
+            [src]="categorie.backgroundImage" 
+            alt="logo menu categoria" class="logo"
+            >
+            <img mat-card-image [src]="categorie.layoutImage" alt="sublogo menu categoria" class="sublogo">
+            <mat-card-content class="name">
+                <p>{{categorie.name}}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</section>
 
-<section class="menu__container">
-    aca va cards de menu
+<section>
+    <div class="menu__container">
+        <mat-card *ngFor="let menuRestaurant of menu">
+            <img mat-card-image [src]="menuRestaurant.mainImage || menuRestaurant.image" alt="logo menu"
+                class="logoMenu">
+            <div class="menu__container--right">
+                <h4 class="titlee">{{menuRestaurant.name}}</h4>
+                <p class="description"> {{menuRestaurant.description || 'Sin descripcion'}}</p>
+                <div class="container-bottom">
+                    <span class="price">${{menuRestaurant.price}}</span>
+                    <button mat-button (click)="menuSelect()">Agregar</button>
+                </div>
+            </div>
+
+        </mat-card>
+    </div>
 </section>

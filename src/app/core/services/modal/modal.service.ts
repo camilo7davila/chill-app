@@ -12,14 +12,19 @@ export class ModalService {
   constructor() { }
 
   public changeStateModal(idRestaurant?: string): void {
-    if(!this.showModal) {
+    if (!this.showModal) {
       this.idRestaurant = idRestaurant
     }
     this.showModal = !this.showModal
   }
 
-  algo() {
-    
-  }
+  // public changeStateModalMenu(idRestaurant?: string): void {
+  //   if (!this.showModal) {
+  //     this.idRestaurant = idRestaurant
+  //   }
+  //   this.showModal = !this.showModal
+  // }
+
+
 
 }

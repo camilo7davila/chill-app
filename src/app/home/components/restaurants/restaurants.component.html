@@ -4,7 +4,7 @@
       src="https://envato-shoebox-0.imgix.net/6fda/0209-b491-423c-a9a7-a874a02933b8/Food+product+%2811%29.jpg?auto=compress%2Cformat&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalign=center%2Cmiddle&markalpha=18&w=800&s=47a3141285b369bc2b42f7cea320bdb9"
       alt="banner">
   </section>
-  
+
   <section class="middlesection">
     <h1>Restaurantes chill</h1>
     <p>Categorias</p>
@@ -16,27 +16,23 @@
   <section class="middlesection">
     <p>Nuestros restaurantes</p>
   </section>
-  
+
   <section class="container">
     <ng-container *ngIf="!isFilter; else filtroActivo">
       <ng-container *ngFor="let restaurant of restaurants">
-        <app-card-restaurants 
-        [restaurant1]="restaurant" 
-        (restaurantClick)="showModalRestaurant($event)"
-        ></app-card-restaurants>
+        <app-card-restaurants [restaurant1]="restaurant" (restaurantClick)="showModalRestaurant($event)">
+        </app-card-restaurants>
       </ng-container>
     </ng-container>
-  
+
     <ng-template #filtroActivo>
       <ng-container *ngFor="let restaurant of restaurantsFilter">
-        <app-card-restaurants 
-        [restaurant1]="restaurant"  
-        (restaurantClick)="showModalRestaurant($event)"
-        ></app-card-restaurants>
+        <app-card-restaurants [restaurant1]="restaurant" (restaurantClick)="showModalRestaurant($event)">
+        </app-card-restaurants>
       </ng-container>
     </ng-template>
   </section>
-  
+
   <div *ngIf="isFilter && restaurantsFilter.length === 0">
     <p class="textbusqueda">!!!!No se econtró restaurantes en esta categoria, por favor cambie sus criterios de
       busqueda!!!!</p>

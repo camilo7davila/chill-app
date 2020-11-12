@@ -37,3 +37,13 @@ export interface BranchesMC{
   main?: number,
   name?: string
 }
+export interface BranchesM{
+  active?:boolean,
+  description?:string,
+  image?:string,
+  mainImage?:string,
+  menuCategoryId?:string,
+  name?:string,
+  price?:number,
+  recommended?:boolean
+}

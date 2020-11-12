@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { Branches, BranchesMC } from '../../interfaces/restaurant.interface';
+import { Branches, BranchesMC,BranchesM } from '../../interfaces/restaurant.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +43,17 @@ export class BranchesRestaurantService {
     return this.afs.collection<BranchesMC>('RestaurantBranches/' + idBranch + '/MenuCategories').valueChanges()
 
   }
+  getBrachesMenu(idBranch: string): Observable<BranchesM[]> {
+    // return this.afs.collection<BranchesM>('RestaurantBranches/' + idBranch + '/Menu').valueChanges()
+    return this.afs.collection<BranchesM>('RestaurantBranches/' + idBranch + '/Menu').snapshotChanges()
+      .pipe(
+        map((actions) => actions.map(a => {
+          const data = a.payload.doc.data() as BranchesM;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        }))
+      )
+  }
+
 
 }
