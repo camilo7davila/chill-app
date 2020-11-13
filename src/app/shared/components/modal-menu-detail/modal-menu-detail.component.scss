@@ -1,0 +1,20 @@
+@import '../../../../assets/styles/theme/variables.scss';
+@import '../../../../assets/styles/mixins/box-shadow-style.scss';
+
+.container__modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	background-color: rgba($color: #000000, $alpha: 0.7);
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+  &--card {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
