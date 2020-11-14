@@ -27,8 +27,6 @@ export class ModalMenuDetailComponent implements OnInit {
     this.branchesService.getAllMenusByIdMenu(this.idBranch, this.menu.id)
       .subscribe(data => {
         this.menuData = data;
-        console.log(this.menuData);
-        
       })
   }
 

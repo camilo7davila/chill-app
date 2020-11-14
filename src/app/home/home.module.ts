@@ -8,6 +8,7 @@ import { CardRestaurantsComponent } from './components/card-restaurants/card-res
 import { MaterialModule } from '../material/material.module';
 import { CategoriesRestaurantComponent } from './components/categories-restaurant/categories-restaurant.component';
 import { CardCategoriesrestaurantComponent } from './components/card-categoriesrestaurant/card-categoriesrestaurant.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { CardCategoriesrestaurantComponent } from './components/card-categoriesr
     CommonModule,
     HomeRoutingModule,
     MaterialModule,
+    SharedModule
   ]
 })
 export class HomeModule { }

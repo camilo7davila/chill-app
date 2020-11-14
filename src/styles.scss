@@ -53,8 +53,11 @@ $chill-user-typography: mat-typography-config($font-family: '$f-avenir');
 
   h1,
   h2,
-  h3 {
+  h3,
+  h4,
+  h5 {
     font-family: mat-font-family($chill-user-typography, body-1);
+    margin: 0;
   }
 }
 
@@ -88,4 +91,8 @@ body::-webkit-scrollbar-thumb {
   background-color: $c-chill-red;
   border-radius: 30px;
   border: 2px solid white;
+}
+
+.mat-checkbox-layout .mat-checkbox-label {
+  margin-left: 20px !important;
 }

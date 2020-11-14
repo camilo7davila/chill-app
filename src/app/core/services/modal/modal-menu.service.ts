@@ -15,7 +15,7 @@ export class ModalMenuService {
 
   constructor() { }
 
-  public changeStateModalMenu(idBranch: string, menu?: BranchesM): void {
+  public changeStateModalMenu(idBranch?: string, menu?: BranchesM): void {
     if (!this.showModalMenu) {
       this.idBranch = idBranch
       this.menu = menu

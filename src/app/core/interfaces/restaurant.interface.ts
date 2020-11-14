@@ -50,7 +50,7 @@ export interface BranchesM{
 }
 export interface MenuDatail{
   additions?:[],
-  customizations?: [],
+  customizations?: Customizations[],
   id?:string,
   images?: [],
   options?: [],
@@ -65,7 +65,7 @@ export interface  additions{
   price:number,
 }
 
-export interface  customizations{
+export interface  Customizations{
   active:boolean,
   id: string,
   image:string,

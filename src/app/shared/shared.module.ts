@@ -6,24 +6,33 @@ import { MaterialModule } from '../material/material.module';
 import { ModalRestaurantsComponent } from './components/modal-restaurants/modal-restaurants.component';
 import { RouterModule } from '@angular/router';
 import { ModalMenuDetailComponent } from './components/modal-menu-detail/modal-menu-detail.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { CustomizationComponent } from './components/modal-menu-detail/customization/customization.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    HeaderComponent, 
+    HeaderComponent,
     FooterComponent,
     ModalRestaurantsComponent,
     ModalMenuDetailComponent,
+    CustomizationComponent,
+
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     ModalRestaurantsComponent,
     ModalMenuDetailComponent,
+    NgxSkeletonLoaderModule
   ],
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    NgxSkeletonLoaderModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class SharedModule { }

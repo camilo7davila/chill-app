@@ -1,19 +1,40 @@
 <div class="container__modal">
-	<div class="card">
+	<div class="container__modal--card">
 		<mat-card>
 
-			<mat-card-header>
-				<mat-card-title>{{menu.name}}</mat-card-title>
-				<mat-card-subtitle></mat-card-subtitle>
-			</mat-card-header>
-		
-			<mat-card-content>
-      </mat-card-content>
-      
-			<mat-card-actions>
-				<button mat-button class="buttonX" (click)="modalMenuService.changeStateModalMenu()">X</button>
-      </mat-card-actions>
-      
+			<section class="container__header">
+				<div class="container__header--title">
+					<mat-icon aria-label="Cerrar modal" class="pointer" (click)="modalMenuService.changeStateModalMenu()">close</mat-icon>
+					<h2>
+						{{menu.name}}
+					</h2>
+				</div>
+			</section>
+
+			<div class="container__general">
+				<section class="container__imagen">
+					<img [src]="menu.mainImage || menu.image" [alt]="menu.name">
+				</section>
+	
+				<section class="container__detail">
+					<p>{{menu.description || 'sin descipcion'}}</p>
+	
+				</section>
+
+				<section>
+					<mat-tab-group mat-align-tabs="center" *ngIf="menuData.length !== 0">
+						<mat-tab label="Personalizar">
+							<app-customization-component 
+								*ngIf="menuData[0]?.customizations"
+								[customizations]="menuData[0].customizations"></app-customization-component>
+
+								<ngx-skeleton-loader count="20"></ngx-skeleton-loader>
+						</mat-tab>
+						<mat-tab label="Adiciones">Adiciones</mat-tab>
+					</mat-tab-group>
+				</section>
+			</div>
+
 		</mat-card>
 	</div>
 </div>

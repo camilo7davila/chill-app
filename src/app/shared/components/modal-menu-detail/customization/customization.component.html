@@ -1,0 +1,9 @@
+<div class="container__header">
+  <h2>Personaliza tu producto</h2>
+  <p>Elimina los ingredientes que no te gustaria en tu producto</p>
+</div>
+<section class="container__selection">
+  <div class="container__check" *ngFor="let custom of customizations">
+    <mat-checkbox class="container__check--input" color="primary" (change)="changeCheckbox($event, custom)">{{custom.name}}</mat-checkbox>
+  </div>
+</section>

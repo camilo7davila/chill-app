@@ -1,0 +1,40 @@
+@import "../../../../../assets/styles/mixins/mixin.scss";
+@import "../../../../../assets/styles/theme/variables.scss";
+
+p {
+  margin: 0;
+}
+
+.container__header {
+  background-color: $c-chill-cream;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px;
+
+  h2 {
+    @include font-style($c-black, "$f-avenir-bold", 2rem);
+    margin-bottom: 5px;
+  }
+
+  p {
+    @include font-style($c-grayscale-1st, "$f-avenir", 1.6rem, normal);
+    text-align: justify;
+  }
+}
+
+.container__selection {
+
+  & .container__check {
+    margin: 12px 0 ;
+    padding: 0 20px;
+
+    &--input {
+      @include font-style($c-grayscale-1st, '$f-avenir', 1.6rem);
+    }
+
+  }
+
+}
+
