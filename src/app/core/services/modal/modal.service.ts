@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ModalService {
 
   public showModal: boolean = false;
   private idRestaurant: string;
+
+  public showModalMenu: boolean = false;
+
 
   get getIdRestaurantSelected(): string { return this.idRestaurant }
 
@@ -18,13 +20,4 @@ export class ModalService {
     this.showModal = !this.showModal
   }
 
-  // public changeStateModalMenu(idRestaurant?: string): void {
-  //   if (!this.showModal) {
-  //     this.idRestaurant = idRestaurant
-  //   }
-  //   this.showModal = !this.showModal
-  // }
-
-
-
-}
+  }

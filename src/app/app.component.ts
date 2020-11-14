@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ModalMenuService } from './core/services/modal/modal-menu.service';
 import { ModalService } from './core/services/modal/modal.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { ModalService } from './core/services/modal/modal.service';
 export class AppComponent {
 
   constructor(
-    public modalService: ModalService
+    public modalService: ModalService,
+    public modalMenuService: ModalMenuService
   ) { }
 
   title = 'chill-user';

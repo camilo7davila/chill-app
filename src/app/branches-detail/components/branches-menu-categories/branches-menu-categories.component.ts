@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
 import { Branches, BranchesMC, BranchesM } from 'src/app/core/interfaces/restaurant.interface';
+import { ModalMenuService } from 'src/app/core/services/modal/modal-menu.service';
 import { BranchesRestaurantService } from 'src/app/core/services/restaurants/branches-restaurant.service';
 
 @Component({
@@ -12,6 +12,8 @@ export class BranchesMenuCategoriesComponent implements OnInit {
 
   public menuCategories: BranchesMC[] = [];
   public menu: BranchesM[] = [];
+  
+  public idMenu:string;
 
   // public idMenuRestaurant: BranchesM;
 
@@ -21,6 +23,7 @@ export class BranchesMenuCategoriesComponent implements OnInit {
 
   constructor(
     private brancheRestaurantService: BranchesRestaurantService,
+    private modalServiceM: ModalMenuService
 
     // private route: ActivatedRoute,
   ) { }
@@ -36,17 +39,14 @@ export class BranchesMenuCategoriesComponent implements OnInit {
 
     this.brancheRestaurantService.getBrachesMenu(this.idBranchess)
       .subscribe(data => {
-        // console.log('menufinal', data);
+        //  console.log('menufinal', data);
         this.menu = data
-        console.log('menuasignado', this.menu);
+        // console.log('menu asignado', this.menu);
       })
   }
 
-
-
-  menuSelect() {
-    this.menuClick.emit('Este dato viajará hacia el padre');
-    // this.menuClick.emit(this.menu);
-    // console.log('quiero ver algo',this.menu);
+  menuSelect(menu) {
+    this.modalServiceM.changeStateModalMenu(this.idBranchess, menu)
   }
+
 }

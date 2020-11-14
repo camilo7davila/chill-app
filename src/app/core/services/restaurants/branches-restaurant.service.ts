@@ -55,5 +55,19 @@ export class BranchesRestaurantService {
       )
   }
 
+  getAllMenusByIdMenu(idBranch: string,idMenu: string) {
+    return this.afs.collection<BranchesM[]>('RestaurantBranches/' + idBranch + '/Menu/' + idMenu + '/MenuData')
+      .snapshotChanges().pipe(
+        map((actions) => actions.map(a => {
+          const data = a.payload.doc.data() as BranchesM;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        }))
+      )
+  }
+
+
+
+
 
 }
