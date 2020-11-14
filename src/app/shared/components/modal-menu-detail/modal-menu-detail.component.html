@@ -26,8 +26,13 @@
 						<mat-tab label="Personalizar">
 							<app-customization-component 
 								*ngIf="menuData[0]?.customizations"
-								[customizations]="menuData[0].customizations"></app-customization-component>
-
+								[customizations]="menuData[0].customizations"
+								(changeCustomization)="changeCustomization($event)"
+							></app-customization-component>
+							<app-option-component
+								*ngIf="menuData[0]?.options"
+								[options]="menuData[0].options"
+							></app-option-component>
 								<ngx-skeleton-loader count="20"></ngx-skeleton-loader>
 						</mat-tab>
 						<mat-tab label="Adiciones">Adiciones</mat-tab>

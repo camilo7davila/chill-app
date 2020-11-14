@@ -9,6 +9,7 @@ import { ModalMenuDetailComponent } from './components/modal-menu-detail/modal-m
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { CustomizationComponent } from './components/modal-menu-detail/customization/customization.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OptionComponent } from './components/modal-menu-detail/option/option.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ModalRestaurantsComponent,
     ModalMenuDetailComponent,
     CustomizationComponent,
+    OptionComponent,
 
   ],
   exports: [

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Customizations } from "../../../../core/interfaces/restaurant.interface";
 
@@ -9,10 +9,10 @@ import { Customizations } from "../../../../core/interfaces/restaurant.interface
 })
 export class CustomizationComponent implements OnInit {
   @Input() customizations: Customizations[] = [];
+  @Output() changeCustomization: EventEmitter<FormArray> = new EventEmitter<FormArray> () ;
 
   public customForm: FormGroup;
 
-  
   get customElements(): FormArray{
     return this.customForm.get('myChoises') as FormArray;
   }
@@ -40,12 +40,12 @@ export class CustomizationComponent implements OnInit {
         name: [custom.name, [Validators.required]]
       })
       this.customElements.push(createCustom)
-      console.log(this.customForm.value);
+      this.changeCustomization.emit(this.customForm.value.myChoises);
     } else {
       this.customElements.controls.forEach((ctrl: FormControl, index) => {
         if(ctrl.value.id === custom.id){
           this.customElements.removeAt(index);
-          console.log(this.customForm.value);
+          this.changeCustomization.emit(this.customForm.value.myChoises);
           return
         }
       })

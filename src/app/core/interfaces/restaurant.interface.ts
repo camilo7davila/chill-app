@@ -38,26 +38,25 @@ export interface BranchesMC{
   name?: string
 }
 export interface BranchesM{
-  active?:boolean,
-  description?:string,
-  image?:string,
-  id?:string,
-  mainImage?:string,
-  menuCategoryId?:string,
-  name?:string,
-  price?:number,
-  recommended?:boolean
+  active?: boolean,
+  description?: string,
+  image?: string,
+  id?: string,
+  mainImage?: string,
+  menuCategoryId?: string,
+  name?: string,
+  price?: number,
+  recommended?: boolean
 }
 export interface MenuDatail{
-  additions?:[],
-  customizations?: Customizations[],
-  id?:string,
-  images?: [],
-  options?: [],
-  sideDish?:[],
-  sideDishes?:[],
+  additions?: Addition[];
+  customizations?: Customizations[];
+  id?: string;
+  images?: string[];
+  options?: Option[];
+  sideDish?: any[];
 }
-export interface  additions{
+export interface  Addition{
   active:boolean,
   id: string,
   image:string,
@@ -71,21 +70,21 @@ export interface  Customizations{
   image:string,
   name:string,
 }
-export interface  options{
-  active:boolean,
-  description:string,
-  id: string,
-  item:[]
+export interface  Option{
+  active: boolean;
+  description: string;
+  id: string;
+  items: Item[];
+  maximum: boolean;
+  required: boolean;
+  select: number;
+  title: string;
 }
-export interface  item{
+export interface  Item{
   id: string,
   image:string,
   name:string,
   price:number,
-  maximum:boolean,
-  required:boolean,
-  select:number,
-  title:string,
 }
 export interface sideDish {
   active: boolean,
