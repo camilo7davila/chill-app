@@ -1,18 +1,71 @@
+@import "../../../../../assets/styles/mixins/mixin.scss";
+@import "../../../../../assets/styles/theme/variables.scss";
+
+p {
+  margin: 0;
+}
+
+.warning {
+  padding: 7px 20px;
+  @include font-style($c-white, "$f-avenir-bold", 1.6rem);
+  color: $c-white !important;
+  background-image: linear-gradient(to left,#FF530D, $c-chill-red);
+  border-radius: 12px;
+}
+
 .container__header {
   background-color: $c-chill-cream;
   height: 70px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   padding: 0 20px;
 
   h2 {
     @include font-style($c-black, "$f-avenir-bold", 2rem);
     margin-bottom: 5px;
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
 
   p {
     @include font-style($c-grayscale-1st, "$f-avenir", 1.6rem, normal);
     text-align: justify;
   }
+}
+
+.container__selection {
+
+  & .container__radio {
+    margin: 12px 0 ;
+    padding: 0 20px;
+    
+    mat-radio-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    mat-radio-button {
+      margin: 12px 0;
+    }
+
+    &--input {
+      @include font-style($c-grayscale-1st, '$f-avenir', 1.6rem);
+    }
+  }
+
+  & .container__check {
+    margin: 12px 0 ;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &--input {
+      @include font-style($c-grayscale-1st, '$f-avenir', 1.6rem);
+    }
+
+  }
+
 }

@@ -1,4 +1,37 @@
-<div class="container__header">
-  <h2>Personaliza tu producto</h2>
-  <p>Elimina los ingredientes que no te gustaria en tu producto</p>
-</div>
+<form [formGroup]="formOptions">
+  <ng-container *ngFor="let option of options; let i = index">
+    <div class="container__header">
+      <div>
+        <h2>{{option.title}}</h2>
+        <p *ngIf="option.maximum">Selecciona máximo {{option.select}} item</p>
+        <p *ngIf="!option.maximum">Selecciona mínimo {{option.select}} item</p>
+      </div>
+      <p *ngIf="option.required" class="warning">Obligatorio</p>
+    </div>
+  
+    <section class="container__selection">
+  
+      <div class="container__radio" *ngIf="option.maximum && option.select === 1">
+        <mat-radio-group class="example-radio-group">
+          <mat-radio-button
+            *ngFor="let item of option.items; let j = index"
+            [value]="j"
+            class="example-radio-button"
+            (change)="addToForm(option, item, i)"
+          >
+            {{item.name}}
+            <span *ngIf="item.price !== 0">${{item.price | number}}</span>
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+  
+      <!-- checkbox -->
+      <ng-container *ngIf="!option.maximum || option.select !== 1">
+        <div class="container__check" *ngFor="let item of option.items">
+          <mat-checkbox class="container__check--input" (change)="addToFormCheck(option, item, $event)" color="primary">{{item.name}}</mat-checkbox>
+          <p *ngIf="item.price !== 0">${{item.price | number}}</p>
+        </div>
+      </ng-container>
+    </section>
+  </ng-container>
+</form>

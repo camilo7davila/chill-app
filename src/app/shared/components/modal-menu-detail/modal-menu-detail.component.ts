@@ -40,6 +40,7 @@ export class ModalMenuDetailComponent implements OnInit {
   ngOnInit(): void {
     this.idBranch = this.modalMenuService.getIdBranch;
     this.menu = this.modalMenuService.getIdMenuSelected;
+    console.log(this.menu);
     this.branchesService.getAllMenusByIdMenu(this.idBranch, this.menu.id)
       .subscribe(data => {
         this.menuData = data;
@@ -64,5 +65,12 @@ export class ModalMenuDetailComponent implements OnInit {
   }
 
   //Options
+  changeOptions(option) {
+    this.optionArray.clear();
+    option.forEach((optionItem) => {
+      this.optionArray.push(new FormControl(optionItem));
+    })
+    console.log(this.mainForm.value);
+  }
 
 }

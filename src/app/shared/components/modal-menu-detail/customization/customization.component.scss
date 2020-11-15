@@ -16,6 +16,9 @@ p {
   h2 {
     @include font-style($c-black, "$f-avenir-bold", 2rem);
     margin-bottom: 5px;
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
 
   p {

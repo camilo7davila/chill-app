@@ -13,7 +13,7 @@ export class CustomizationComponent implements OnInit {
 
   public customForm: FormGroup;
 
-  get customElements(): FormArray{
+  get customElements(): FormArray {
     return this.customForm.get('myChoises') as FormArray;
   }
 
@@ -22,7 +22,6 @@ export class CustomizationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.customizations);
     this.buildForm();
   }
 

@@ -96,3 +96,9 @@ body::-webkit-scrollbar-thumb {
 .mat-checkbox-layout .mat-checkbox-label {
   margin-left: 20px !important;
 }
+
+.mat-radio-label-content {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: space-between !important;
+}

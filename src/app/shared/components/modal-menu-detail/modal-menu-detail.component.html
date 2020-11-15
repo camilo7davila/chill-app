@@ -32,8 +32,8 @@
 							<app-option-component
 								*ngIf="menuData[0]?.options"
 								[options]="menuData[0].options"
+								(changeOptions)="changeOptions($event)"
 							></app-option-component>
-								<ngx-skeleton-loader count="20"></ngx-skeleton-loader>
 						</mat-tab>
 						<mat-tab label="Adiciones">Adiciones</mat-tab>
 					</mat-tab-group>
