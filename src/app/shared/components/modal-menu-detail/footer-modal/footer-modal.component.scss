@@ -1,0 +1,48 @@
+@import "../../../../../assets/styles/mixins/mixin.scss";
+@import "../../../../../assets/styles/theme/variables.scss";
+
+section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.container__left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & span {
+    margin: 0 15px;
+  }
+}
+
+.container__right {
+  width: 68%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to left,#FF530D, $c-chill-red);
+  height: 100%;
+  border-radius: 5px;
+
+  &--left {
+    width: 20%;
+  }
+
+  &--middle {
+    text-align: center;
+    width: 60%;
+    & h3 {
+      @include font-style($c-chill-cream, "$f-avenir-bold", 1.7rem, normal);
+    }
+  }
+
+  &--right {
+    width: 20%;
+    text-align: center;
+    & span {
+      @include font-style($c-chill-cream, "$f-avenir", 1.5rem, normal);
+    } 
+  }
+}

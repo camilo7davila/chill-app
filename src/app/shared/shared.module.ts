@@ -10,6 +10,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { CustomizationComponent } from './components/modal-menu-detail/customization/customization.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OptionComponent } from './components/modal-menu-detail/option/option.component';
+import { FooterModalComponent } from './components/modal-menu-detail/footer-modal/footer-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { OptionComponent } from './components/modal-menu-detail/option/option.co
     ModalMenuDetailComponent,
     CustomizationComponent,
     OptionComponent,
+    FooterModalComponent,
 
   ],
   exports: [

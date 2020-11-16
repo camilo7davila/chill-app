@@ -9,10 +9,9 @@ import { Option } from 'src/app/core/interfaces/restaurant.interface';
 })
 export class OptionComponent implements OnInit {
   @Input() options: Option[];
-  @Output() changeOptions: EventEmitter<FormArray> = new EventEmitter<FormArray> () ;
+  @Output() changeOptions: EventEmitter<FormArray> = new EventEmitter<FormArray>();
 
   public formOptions: FormGroup;
-  public arrayValid: any[] = [];
 
   constructor(
     private fB: FormBuilder
@@ -25,23 +24,6 @@ export class OptionComponent implements OnInit {
   ngOnInit(): void {
     this.formBuilder();
     this.options.forEach((option) => {
-      if (option.required) {
-        const itemValid = {
-          maximum: option.maximum,
-          required: option.required,
-          select: option.select,
-          isValid: false
-        }
-        this.arrayValid.push(itemValid)
-      } else {
-        const itemValid = {
-          maximum: option.maximum,
-          required: option.required,
-          select: option.select,
-          isValid: true
-        }
-        this.arrayValid.push(itemValid)
-      }
       this.customElementOption.push(new FormGroup({
         active: new FormControl(option.active),
         description: new FormControl(option.description),
@@ -53,7 +35,6 @@ export class OptionComponent implements OnInit {
         title: new FormControl(option.title)
       }))
     })
-    console.log(this.arrayValid);
   }
 
   private formBuilder() {
@@ -77,7 +58,6 @@ export class OptionComponent implements OnInit {
       }
     })
     this.changeOptions.emit(this.customElementOption.value)
-    this.arrayValid[index] = { ...this.arrayValid[index], isValid: true }
   }
 
   addToFormCheck(option, item, { checked }) {
@@ -98,7 +78,7 @@ export class OptionComponent implements OnInit {
           controlFind.controls.forEach((ctrlItem: FormControl, index) => {
             if (ctrlItem.value.id === item.id) {
               controlFind.removeAt(index);
-              this.changeOptions.emit(this.customElementOption.value)    
+              this.changeOptions.emit(this.customElementOption.value)
               return
             }
           })

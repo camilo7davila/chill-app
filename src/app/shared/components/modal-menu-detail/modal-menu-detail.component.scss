@@ -83,3 +83,10 @@
 		text-align: justify;
 	}
 }
+
+.container__footer {
+	height: calc(100vh - 85vh - 70px);
+	padding: 10px 20px;
+	border-top: 1px solid $c-grayscale-3th;
+	@include box-shadow(0,0, 10, 0, $c-grayscale-8th);
+}
