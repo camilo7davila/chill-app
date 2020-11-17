@@ -57,11 +57,13 @@ export interface MenuDatail{
   sideDish?: any[];
 }
 export interface  Addition{
-  active:boolean,
+  active: boolean,
   id: string,
-  image:string,
-  name:string,
-  price:number,
+  image: string,
+  name: string,
+  price: number,
+  total?: number,
+  activeUi?: boolean
 }
 
 export interface  Customizations{
@@ -82,9 +84,9 @@ export interface  Option{
 }
 export interface  Item{
   id: string,
-  image:string,
-  name:string,
-  price:number,
+  image: string,
+  name: string,
+  price: number,
 }
 export interface sideDish {
   active: boolean,
@@ -98,3 +100,4 @@ export interface  items{
   price:number,
   title:string,
 }
+

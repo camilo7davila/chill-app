@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatIconModule,
     MatTabsModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatExpansionModule
   ],
   exports: [
     MatInputModule,
@@ -27,7 +29,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatIconModule,
     MatTabsModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatExpansionModule
   ]
 })
 export class MaterialModule { }

@@ -56,7 +56,7 @@
 }
 
 .container__general {
-	height: 85vh;
+	height: calc(100vh - 70px - 70px);
 	overflow-y: auto;
 }
 
@@ -85,7 +85,7 @@
 }
 
 .container__footer {
-	height: calc(100vh - 85vh - 70px);
+	height: 70px;
 	padding: 10px 20px;
 	border-top: 1px solid $c-grayscale-3th;
 	@include box-shadow(0,0, 10, 0, $c-grayscale-8th);

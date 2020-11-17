@@ -1,0 +1,63 @@
+@import "../../../../../assets/styles/mixins/mixin.scss";
+@import "../../../../../assets/styles/theme/variables.scss";
+
+.container__header {
+  background-color: $c-chill-cream;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+
+  h2 {
+    @include font-style($c-black, "$f-avenir-bold", 2rem);
+    margin-bottom: 5px;
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.container__selection {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 10px 20px;
+  display: flex;
+
+  & mat-expansion-panel {
+    margin-right: 20px;
+    border-radius: 10px;
+  }
+
+  & mat-expansion-panel-header {
+    height: 100px;
+    width: 200px;
+    padding: 0;
+    border-radius: 10px;
+  }
+
+  & mat-card {
+    padding: 0px;
+    height: 100px;
+    width: 200px;
+    border-radius: 10px;
+  }
+
+  & .img__fondo {
+    width: inherit;
+    height: inherit;
+    background-position: center;
+    background-repeat: none;
+    background-size: cover;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & .button__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

@@ -102,3 +102,9 @@ body::-webkit-scrollbar-thumb {
   display: flex !important;
   justify-content: space-between !important;
 }
+
+.mat-expansion-panel-body {
+  width: 140px;
+  margin: 0 auto;
+  padding: 5px 10px !important;
+}

@@ -11,6 +11,7 @@ import { CustomizationComponent } from './components/modal-menu-detail/customiza
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OptionComponent } from './components/modal-menu-detail/option/option.component';
 import { FooterModalComponent } from './components/modal-menu-detail/footer-modal/footer-modal.component';
+import { AdditionsComponent } from './components/modal-menu-detail/additions/additions.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FooterModalComponent } from './components/modal-menu-detail/footer-moda
     CustomizationComponent,
     OptionComponent,
     FooterModalComponent,
+    AdditionsComponent,
 
   ],
   exports: [
