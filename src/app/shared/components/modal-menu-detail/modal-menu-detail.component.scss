@@ -60,6 +60,20 @@
 	overflow-y: auto;
 }
 
+.container__general::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.container__general::-webkit-scrollbar:vertical {
+	width: 10px;
+}
+
+.container__general::-webkit-scrollbar-thumb {
+    background-color: red;
+    border-radius: 30px;
+    border: 2px solid white;
+}
+
 .container__imagen {
 	height: 30vh;
 	width: 100%;

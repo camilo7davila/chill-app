@@ -4,21 +4,24 @@
 
 <section class="container__selection">
   <div class="container__selection--card" *ngFor="let addition of additions; let i = index">
-    <mat-expansion-panel 
+    <mat-expansion-panel
       hideToggle="true" 
       (opened)="selectedAddition(addition, i)"
       (closed)="deleteAddition(addition, i)"  
     >
       <mat-expansion-panel-header>
-        <mat-card>
-          <div 
-            class="img__fondo"
-            [style.background-image]="'url('+ addition.image +')'"
-          >
-            <h3>{{addition.name}}</h3>
-            <span>${{addition.price | number}}</span>
-          </div>
-        </mat-card>
+        <div class="header">
+          <p class="total">{{addition.total}}</p>
+          <mat-card>
+            <div 
+              class="img__fondo"
+              [style.background-image]="'url('+ addition.image +')'"
+            >
+              <h3>{{addition.name}}</h3>
+              <span>${{addition.price | number}}</span>
+            </div>
+          </mat-card>
+        </div>
       </mat-expansion-panel-header>
       <div class="button__container">
         <div class="example-button-container">
