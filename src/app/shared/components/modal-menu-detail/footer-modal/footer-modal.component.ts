@@ -18,6 +18,7 @@ export class FooterModalComponent implements OnInit, OnChanges {
 
   //Selecciones del usuario
   public totalOptions: number;
+  public totalAdditions: number;
 
   constructor(
     public modalMenuService: ModalMenuService,
@@ -28,7 +29,8 @@ export class FooterModalComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.calcTotalOptions()
+    this.calcTotalOptions();
+    this.calcTotalAdditions();
   }
 
   ngOnInit(): void {
@@ -42,7 +44,7 @@ export class FooterModalComponent implements OnInit, OnChanges {
     this.totalOptions = 0;
     const { options } = this.mainForm;
     const items = options.map(option => option.items);
-    if(items.length === 0) {
+    if (items.length === 0) {
       this.calcTotal();
       return
     }
@@ -52,9 +54,22 @@ export class FooterModalComponent implements OnInit, OnChanges {
     this.calcTotal();
   }
 
+  calcTotalAdditions() {
+    this.totalAdditions = 0;
+    const { additions } = this.mainForm;
+    if (additions.length === 0) {
+      this.calcTotal();
+      return;
+    }
+    const sumAdditions = (invoiceAmount, nextAddition) => invoiceAmount + (nextAddition.total * nextAddition.price);
+    this.totalAdditions = additions.reduce(sumAdditions, 0);
+    this.calcTotal()
+  }
+
+
   //Metodos cambio de quantityDish
   changeQuantityDishes(type: 'resta' | 'suma') {
-    if(type === 'resta') {
+    if (type === 'resta') {
       this.quantityTotal -= 1;
     } else {
       this.quantityTotal += 1;
@@ -63,7 +78,7 @@ export class FooterModalComponent implements OnInit, OnChanges {
   }
 
   calcTotal() {
-    this.totalPrice = ((this.totalOptions + this.valueDish) * this.quantityTotal);
+    this.totalPrice = ((this.totalOptions + this.valueDish) * this.quantityTotal) + (this.totalAdditions);
   }
 
 }

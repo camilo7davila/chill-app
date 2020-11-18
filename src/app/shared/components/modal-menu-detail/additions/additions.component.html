@@ -3,15 +3,18 @@
 </div>
 
 <section class="container__selection">
-  <div class="container__selection--card" *ngFor="let addition of additions; let i = index">
+  <div 
+    class="container__selection--card" 
+    *ngFor="let addition of additions; let i = index"
+  >
     <mat-expansion-panel
       hideToggle="true" 
       (opened)="selectedAddition(addition, i)"
-      (closed)="deleteAddition(addition, i)"  
+      (closed)="deleteAddition(addition, i)"
     >
       <mat-expansion-panel-header>
         <div class="header">
-          <p class="total">{{addition.total}}</p>
+          <p class="total" *ngIf="addition.total !== 0">{{addition.total}}</p>
           <mat-card>
             <div 
               class="img__fondo"
@@ -25,7 +28,12 @@
       </mat-expansion-panel-header>
       <div class="button__container">
         <div class="example-button-container">
-          <button mat-mini-fab aria-label="Example icon button with a home icon">
+          <button 
+            mat-mini-fab 
+            aria-label="Example icon button with a home icon"
+            (click)="substractAddition(addition, i)"
+            [disabled]="addition.total === 0"
+          >
             <mat-icon>remove</mat-icon>
           </button>
         </div>
@@ -33,7 +41,11 @@
           <span>{{addition.total}}</span>
         </div>
         <div class="example-button-container">
-          <button mat-mini-fab aria-label="Example icon button with a home icon">
+          <button 
+            mat-mini-fab 
+            aria-label="Example icon button with a home icon"
+            (click)="sumAddition(addition, i)"
+          >
             <mat-icon>add</mat-icon>
           </button>
         </div>

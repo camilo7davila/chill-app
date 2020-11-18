@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { BranchesM, MenuDatail } from 'src/app/core/interfaces/restaurant.interface';
+import { Addition, BranchesM, MenuDatail } from 'src/app/core/interfaces/restaurant.interface';
 
 import { ModalMenuService } from 'src/app/core/services/modal/modal-menu.service';
 
@@ -68,6 +68,14 @@ export class ModalMenuDetailComponent implements OnInit {
     this.optionArray.clear();
     option.forEach((optionItem) => {
       this.optionArray.push(new FormControl(optionItem));
+    })
+  }
+
+  //Addition
+  changeAdditions(addition: Addition[]) {
+    this.additionArray.clear();
+    addition.forEach(addition => {
+      this.additionArray.push(new FormControl(addition));
     })
   }
 
