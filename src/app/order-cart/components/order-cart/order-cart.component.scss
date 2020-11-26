@@ -1,0 +1,57 @@
+@import "../../../../assets/styles/mixins/mixin.scss";
+@import "../../../../assets/styles/theme/variables.scss";
+
+section {
+    width: 350px;
+    margin: 0 auto;
+    padding: 5px 10px 0px 10px;
+}
+.list {
+    width: inherit;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    object-position: center;
+    margin: 0 !important;
+    padding: 2px;
+    // border-radius: 10px;
+}
+h4 {
+    @include font-style($c-black, "$f-avenir", 1.6rem);
+}
+h5 {
+    @include font-style($c-black, "$f-avenir-bold", 1.6rem);
+}
+button {
+    @include font-style($c-white-gray, "$f-avenir", 2rem, normal, capitalize);
+    background-image: linear-gradient(to left, #ff530d, $c-chill-red);
+    padding: 2px !important;
+    border-radius: 5px;
+    height: 40px;
+}
+.button {
+    width: inherit;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+@media screen and (max-width: 400px) {
+    .list {
+        width: 100%;
+    }
+    .button {
+        width: 100%;
+    }
+    section{
+        width: 100%;
+    }
+}

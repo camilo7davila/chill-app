@@ -9,10 +9,11 @@
     <h1>Restaurantes chill</h1>
     <p>Categorias</p>
   </section>
-  <section>
-    <app-categories-restaurant *ngIf="Categories !== undefined" [categories]="Categories"
-      (categorySelected)="categorySelected($event)"></app-categories-restaurant>
-  </section>
+    <app-categories-restaurant 
+      *ngIf="Categories !== undefined" 
+      [categories]="Categories"
+      (categorySelected)="categorySelected($event)"></app-categories-restaurant
+    >
   <section class="middlesection">
     <p>Nuestros restaurantes</p>
   </section>

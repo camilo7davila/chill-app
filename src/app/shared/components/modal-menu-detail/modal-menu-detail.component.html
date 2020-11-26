@@ -41,6 +41,13 @@
 								[additionsInput]="menuData[0].additions"
 								(changeAdditions)="changeAdditions($event)"
 							></app-additions-component>
+
+							<app-side-dish-component
+								*ngIf="menuData[0]?.sideDish"
+								[sideDishInput]="menuData[0].sideDish"
+								(changeSideDish)="changeSideDish($event)"
+							></app-side-dish-component>
+
 						</mat-tab>
 					</mat-tab-group>
 				</section>

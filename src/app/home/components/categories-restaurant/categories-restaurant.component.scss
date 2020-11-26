@@ -1,10 +1,17 @@
 @import '../../../../assets/styles/mixins/font-style.scss';
 @import '../../../../assets/styles/theme/variables.scss';
 
+:host {
+  margin: 10px auto;
+  overflow-x: auto;
+  padding: 0 15px;
+  margin: 10px ;
+}
+
 .container{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: auto;
     margin: 10px auto;
     justify-items: center;
@@ -25,15 +32,4 @@
     border: 2px solid white;
 }
 
-
-
-
-
-  @media screen and (max-width: 700px) {
-    .container {
-      grid-template-columns: repeat(5, 1fr);
-      // overflow-x: auto;
-      
-      // overflow: hidden;
-    }
-  }
+  

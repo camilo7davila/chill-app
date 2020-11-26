@@ -20,9 +20,11 @@
               class="img__fondo"
               [style.background-image]="'url('+ addition.image +')'"
             >
+            </div>
+            <div class="text__fondo">
               <h3>{{addition.name}}</h3>
               <span>${{addition.price | number}}</span>
-            </div>
+          </div>
           </mat-card>
         </div>
       </mat-expansion-panel-header>

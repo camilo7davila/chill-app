@@ -1,6 +1,17 @@
 @import "../../../../assets/styles/mixins/font-style.scss";
 @import "../../../../assets/styles/theme/variables.scss";
 
+:host {
+  width: 250px;
+  height: 150px;
+  margin-right: 20px;
+}
+
+.item {
+  width: 250px;
+  height: 150px;
+}
+
 img {
   width: inherit;
   height: inherit;

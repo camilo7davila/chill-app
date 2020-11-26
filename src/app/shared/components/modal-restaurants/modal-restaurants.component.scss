@@ -1,3 +1,6 @@
+@import "../../../../assets/styles/theme/variables.scss";
+@import "../../../../assets/styles/mixins/mixin.scss";
+
 .container-modal {
 	position: fixed;
 	top: 0;
@@ -16,10 +19,31 @@
 	width: 350px;
 	position: relative;
 }
+.mat-card-content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	@include font-style($c-black, "$f-avenir", 1.6rem, normal, capitalize, normal);
+}
+.mat-card-title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@include font-style($c-black, "$f-avenir-bold", 2.5rem, normal, capitalize, normal);
+}
 
 .buttonX {
 	position: absolute;
-	top: -5px;
-	left: 300px;
-	border-radius: 50%;
+	top: 5px;
+	left: 320px;
+	cursor: pointer;
+}
+.buttonIr {
+	@include font-style($c-white-gray, "$f-avenir", 2rem, normal, capitalize);
+	background-image: linear-gradient(to left, #ff530d, $c-chill-red);
+	padding: 5px 20px;
+	border-radius: 10px;
+}
+p{
+	@include font-style($c-black, "$f-avenir", 1.6rem, normal, initial, normal);
 }

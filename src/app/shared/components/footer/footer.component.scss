@@ -2,8 +2,16 @@
 @import '../../../../assets/styles/theme/variables.scss';
 
 .prueba{
-    //position:fixed;
-    bottom:0px;
     height: 80px;
-
+    width: 100%;
 }
+@media screen and (max-width: 470px) {
+    span{
+        display: none;
+    }
+    h6{
+        display: grid;
+        justify-content: center;
+    }
+
+  }

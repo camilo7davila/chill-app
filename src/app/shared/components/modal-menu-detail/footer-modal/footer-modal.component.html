@@ -2,31 +2,25 @@
   <div class="container__left">
 
     <div class="example-button-container">
-      <button 
-        mat-mini-fab aria-label="Subtract button"
-        (click)="changeQuantityDishes('resta')"
-        [disabled]="quantityTotal === 1"
-      >
+      <button mat-mini-fab aria-label="Subtract button" (click)="changeQuantityDishes('resta')"
+        [disabled]="quantityTotal === 1">
         <mat-icon>remove</mat-icon>
       </button>
     </div>
     <span>{{ quantityTotal }}</span>
     <div class="example-button-container">
-      <button 
-        mat-mini-fab aria-label="Add button"
-        (click)="changeQuantityDishes('suma')"
-      >
+      <button mat-mini-fab aria-label="Add button" (click)="changeQuantityDishes('suma')">
         <mat-icon>add</mat-icon>
       </button>
     </div>
 
   </div>
 
-  <div class="container__right">
+  <div class="container__right" (click)="addCart()">
     <div class="container__right--left">
 
     </div>
-    <div class="container__right--middle">
+    <div  class="container__right--middle">
       <h3>Agregar {{ quantityTotal }} al pedido</h3>
     </div>
     <div class="container__right--right">

@@ -6,6 +6,7 @@ img{
     height: 150px;
     border-radius: 50%;
     transition: all 1s ease;
+    cursor: pointer;
   }
 
 img:hover {
@@ -19,6 +20,7 @@ img:hover {
 .item{
     & h3 {
         text-align:  center;
+        margin: 0 0 30px 0;;
         @include font-style(black,'$f-avenir', 1.5rem)
     }
 }

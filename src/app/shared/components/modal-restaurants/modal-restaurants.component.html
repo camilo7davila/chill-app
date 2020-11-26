@@ -4,17 +4,24 @@
 			<mat-card-header>
 				<div mat-card-avatar></div>
 				<mat-card-title>Sucursales:</mat-card-title>
-				<!-- <mat-card-subtitle>sucursales disponibles </mat-card-subtitle> -->
 			</mat-card-header>
 			<div mat-card-image></div>
-			<mat-card-content *ngFor="let sucursal of branchesFound">
-				{{sucursal.address + ',' }}
-				{{sucursal.state }}
-				<button (click)="modalService.changeStateModal()" [routerLink]="['/sucursal', sucursal.id]" >Ir</button>
-			</mat-card-content>
+			<ng-container *ngIf="branchesFound.length !== 0; else noBranchesFound">
+				<mat-card-content *ngFor="let sucursal of branchesFound">
+					<div>
+						{{sucursal.address + ',' }}
+						{{sucursal.state }}
+					</div>
+					<div>
+						<button  mat-button class="buttonIr" (click)="modalService.changeStateModal()" [routerLink]="['/sucursal', sucursal.id]" >  Ir </button>
+					</div>
+				</mat-card-content>
+			</ng-container>
+			<ng-template #noBranchesFound>
+				<P>No hay sucursales disponibles para el restaurante seleccionado </P>
+			</ng-template>
 			<mat-card-actions>
-				<!-- <button mat-button>LIKE</button> -->
-				<button mat-button class="buttonX" (click)="modalService.changeStateModal()">X</button>
+				<mat-icon aria-label="Cerrar modal" class="buttonX"  (click)="modalService.changeStateModal()">close</mat-icon>
 			</mat-card-actions>
 		</mat-card>
 	</div>

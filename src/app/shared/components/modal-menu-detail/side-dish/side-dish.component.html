@@ -1,0 +1,64 @@
+<!-- <section class="container__selection">
+    <div class="container__selection--card" *ngFor="let sidedish of sideDish; let i = index">
+        <div class="container__header">
+            <div>
+                <h2>{{sidedish.title}}</h2>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<ng-container *ngFor="let sidedish of sideDish; let i = index">
+    <div class="container__header">
+        <div>
+            <h2>{{sidedish.title}}</h2>
+        </div>
+    </div>
+
+    <section class="container__selection">
+        <div class="container__selection--card" *ngFor="let item of sidedish.items; let j = index">
+            <mat-expansion-panel
+                hideToggle="true"
+                (opened)="selectedItem(item, i, j)"
+                (closed)="deleteItem(item, i, j)"
+            >
+            
+                <mat-expansion-panel-header>
+                    <div class="header">
+                        <p class="total" *ngIf="item.total !== 0">{{item.total}}</p>
+                        <mat-card>
+                            <div class="img__fondo" [style.background-image]="'url('+ item.image +')'">
+                            </div>
+                            <div class="text__fondo">
+                                <h3>{{item.name}}</h3>
+                                <span>${{item.price | number}}</span>
+                            </div>
+                            <h3>{{item.name}}</h3>
+                            <span>${{item.price | number}}</span>
+                        </mat-card>
+                    </div>
+                </mat-expansion-panel-header>
+                <div class="button__container">
+                    <div class="example-button-container">
+                        <button mat-mini-fab 
+                        aria-label="Example icon button with a home icon"
+                        (click)="substractItem(item, i,j)"
+                        [disabled]=" item.total=== 0">
+                            <mat-icon>remove</mat-icon>
+                        </button>
+                    </div>
+                    <div>
+                        <span>{{item.total}}</span>
+                    </div>
+                    <div class="example-button-container">
+                        <button mat-mini-fab 
+                        aria-label="Example icon button with a home icon"
+                        (click)="sumItem(item, i,j)">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </div>
+    </section>
+</ng-container>

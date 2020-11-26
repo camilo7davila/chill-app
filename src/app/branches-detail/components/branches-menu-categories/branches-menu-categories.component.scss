@@ -4,7 +4,7 @@
 //categorias del menu
 .categories__container {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(20, 1fr);
     grid-gap: 60px;
     height: auto;
     width: auto;
@@ -29,6 +29,7 @@
     position: relative;
     object-position: center;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .sublogo {
@@ -54,7 +55,7 @@
 }
 
 .categories__container::-webkit-scrollbar-thumb {
-    background-color: red;
+    background-color: $c-chill-red;
     border-radius: 30px;
     border: 2px solid white;
 }
@@ -68,6 +69,7 @@
     margin: 40px auto;
     justify-items: center;
     max-width: 1280px;
+    
 
     mat-card {
         width: 100%;
@@ -77,9 +79,9 @@
         justify-content: space-between;
 
         &:hover {
-            -webkit-box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.21);
-            -moz-box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.21);
-            box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.21);
+            -webkit-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.21);
+            -moz-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.21);
+            box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.21);
         }
     }
 
@@ -108,7 +110,10 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    @include font-style($c-black, "$f-avenir", 1.5rem, normal, none);
+    @include font-style($c-black, "$f-avesnir", 1.5rem, normal, none);
+    &::first-letter {
+        text-transform: uppercase;
+    }
 }
 .price {
     @include font-style($c-black, "$f-avenir", 2rem, normal, capitalize);
@@ -116,7 +121,7 @@
 }
 button {
     @include font-style($c-white-gray, "$f-avenir", 2rem, normal, capitalize);
-    background-image: linear-gradient(to left,#FF530D, $c-chill-red);
+    background-image: linear-gradient(to left, #ff530d, $c-chill-red);
     padding: 5px 20px;
     border-radius: 10px;
 }

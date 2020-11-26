@@ -25,6 +25,7 @@ section {
   background-image: linear-gradient(to left,#FF530D, $c-chill-red);
   height: 100%;
   border-radius: 5px;
+  cursor: pointer;
 
   &--left {
     width: 20%;
@@ -32,17 +33,20 @@ section {
 
   &--middle {
     text-align: center;
-    width: 60%;
+    width: 40%;
     & h3 {
-      @include font-style($c-chill-cream, "$f-avenir-bold", 1.7rem, normal);
+      @include font-style($c-chill-cream, "$f-avenir", 1.7rem, normal);
     }
   }
 
   &--right {
-    width: 20%;
+    width: 40%;
     text-align: center;
     & span {
       @include font-style($c-chill-cream, "$f-avenir", 1.5rem, normal);
     } 
   }
 }
+// button{
+//   background-image: linear-gradient(to left,#FF530D, $c-chill-red);
+// }

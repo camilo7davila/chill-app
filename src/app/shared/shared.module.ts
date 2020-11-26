@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OptionComponent } from './components/modal-menu-detail/option/option.component';
 import { FooterModalComponent } from './components/modal-menu-detail/footer-modal/footer-modal.component';
 import { AdditionsComponent } from './components/modal-menu-detail/additions/additions.component';
+import { SideDishComponent } from './components/modal-menu-detail/side-dish/side-dish.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AdditionsComponent } from './components/modal-menu-detail/additions/add
     OptionComponent,
     FooterModalComponent,
     AdditionsComponent,
+    SideDishComponent,
 
   ],
   exports: [

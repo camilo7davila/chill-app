@@ -49,12 +49,17 @@ export interface BranchesM{
   recommended?: boolean
 }
 export interface MenuDatail{
-  additions?: Addition[];
-  customizations?: Customizations[];
-  id?: string;
-  images?: string[];
-  options?: Option[];
-  sideDish?: any[];
+  additions?: Addition[],
+  customizations?: Customizations[],
+  id?: string,
+  images?: string[],
+  options?: Option[],
+  sideDish?: SideDish[],
+  totalPrice?: number,
+  quantityTotal?:number,
+  idBranch?: any,
+  nameMenu?:string,
+  imagenMenu?:string,
 }
 export interface  Addition{
   active: boolean,
@@ -88,16 +93,18 @@ export interface  Item{
   name: string,
   price: number,
 }
-export interface sideDish {
+export interface SideDish {
   active: boolean,
   id:string,
-  items:[]
+  items: Items[],
+  title:string,
+  total?: number
 }
-export interface  items{
+export interface  Items{
   id: string,
   image:string,
   name:string,
   price:number,
-  title:string,
+  total?: number
 }
 

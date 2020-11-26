@@ -35,6 +35,7 @@ export class AdditionsComponent implements OnInit {
         price: [addition.price],
         total: [addition.total]
       })
+      
       this.customElementAdditions.push(additionPush);
       this.changeAdditions.emit(this.customElementAdditions.value);
     })

@@ -20,4 +20,4 @@ export class ModalService {
     this.showModal = !this.showModal
   }
 
-  }
+}

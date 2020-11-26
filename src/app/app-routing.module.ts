@@ -20,6 +20,10 @@ const routes: Routes = [
         path: 'sucursal',
         loadChildren: () => import('./branches-detail/branches-detail.module').then(m => m.BranchesDetailModule)
       },
+      {
+        path: 'car',
+        loadChildren: () => import('./order-cart/order-cart.module').then(m => m.OrderCartModule)
+      },
     ]
   },
 ];

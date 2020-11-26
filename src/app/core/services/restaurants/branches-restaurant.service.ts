@@ -36,7 +36,6 @@ export class BranchesRestaurantService {
 
   getBrachesDetail(idBranch: string): Observable<Branches> {
     return this.afs.doc<Branches>('RestaurantBranches/' + idBranch).valueChanges()
-
   }
 
   getBrachesMenuCategories(idBranch: string): Observable<BranchesMC[]> {

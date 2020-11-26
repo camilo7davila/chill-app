@@ -1,0 +1,24 @@
+<section>
+    <div *ngFor="let dataaa of data">
+        {{dataaa.idBranche}}
+        <div class="list" *ngFor="let dataa of dataaa.request">
+            <img mat-card-image [src]="dataa.imagenMenu" alt="logo menu">
+            <div>
+                <h4>{{dataa.nameMenu}}</h4>
+                <h5>${{dataa.totalPrice | number}}</h5>
+            </div>
+            <div>
+                <mat-icon class="pointer" mat-raised-button (click)="deleteCar()">delete</mat-icon>
+            </div>
+
+        </div>
+        <!-- <div class="button">
+            <button mat-button (click)="deleteCarAll()">Vaciar Carrito</button>
+            <button mat-button (click)="total()">Pagar total</button>
+        </div> -->
+    </div>
+    <div class="button">
+        <button mat-button (click)="deleteCarAll()">Vaciar Carrito</button>
+        <button mat-button (click)="total()">Pagar total {{priceTotalPay}}</button>
+    </div>
+</section>
