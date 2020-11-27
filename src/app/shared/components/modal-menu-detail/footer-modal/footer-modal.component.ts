@@ -4,6 +4,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 import { ModalMenuService } from 'src/app/core/services/modal/modal-menu.service';
 import { BranchesM, MenuDatail } from 'src/app/core/interfaces/restaurant.interface';
+import { CartService } from 'src/app/core/services/cart/cart.service';
 
 @Component({
   selector: 'app-footer-modal-component',
@@ -28,6 +29,7 @@ export class FooterModalComponent implements OnInit, OnChanges {
   constructor(
     private route: ActivatedRoute,
     public modalMenuService: ModalMenuService,
+    private cartService: CartService,
   ) {
     this.totalPrice = 0;
     this.quantityTotal = 1;
@@ -121,5 +123,7 @@ export class FooterModalComponent implements OnInit, OnChanges {
       dataInStorage.push(this.mainForm)
       localStorage.setItem(this.mainForm.idBranch, JSON.stringify(dataInStorage));
     }
+    this.cartService.changeCart(true);
+    this.modalMenuService.changeStateModalMenu()
   }
 }

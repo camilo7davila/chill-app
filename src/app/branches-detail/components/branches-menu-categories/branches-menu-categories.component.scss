@@ -69,7 +69,6 @@
     margin: 40px auto;
     justify-items: center;
     max-width: 1280px;
-    
 
     mat-card {
         width: 100%;
@@ -119,6 +118,7 @@
     @include font-style($c-black, "$f-avenir", 2rem, normal, capitalize);
     font-weight: bold;
 }
+
 button {
     @include font-style($c-white-gray, "$f-avenir", 2rem, normal, capitalize);
     background-image: linear-gradient(to left, #ff530d, $c-chill-red);
@@ -152,6 +152,15 @@ button {
             width: 180px;
             height: 250px;
         }
+    }
+
+    .price {
+        @include font-style($c-black, "$f-avenir", 1.5rem, normal, capitalize);
+        font-weight: bold;
+    }
+
+    button {
+        @include font-style($c-white-gray, "$f-avenir", 1.5rem, normal, capitalize);
     }
 
     .logo {

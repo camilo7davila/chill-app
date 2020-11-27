@@ -1,10 +1,10 @@
 <mat-toolbar color="primary">
-  <div>
+  <div style="display: flex; justify-content: center; align-items: center;">
     <img src="assets/images/logo_chill.svg" alt="icon" width="50">
   </div>
   <div>
-    <span *ngIf="authService.currentUser"> {{authService.currentUser}} </span>
-    <a mat-raised-button [routerLink]="['/car']" [matBadge]=" 12" matBadgeColor="primary">
+    <!-- <span *ngIf="authService.currentUser"> {{authService.currentUser}} </span> -->
+    <a mat-raised-button [routerLink]="['/car']" [matBadge]="totalRequest" matBadgeColor="primary">
       <mat-icon> fastfood</mat-icon>
     </a>
   </div>

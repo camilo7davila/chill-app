@@ -5,6 +5,7 @@ import { RestaurantsService } from 'src/app/core/services/restaurants/restaurant
 import { BranchesRestaurantService } from 'src/app/core/services/restaurants/branches-restaurant.service';
 
 import { forkJoin, Observable } from 'rxjs';
+import { CartService } from 'src/app/core/services/cart/cart.service';
 
 
 @Component({
@@ -26,12 +27,17 @@ export class OrderCartComponent implements OnInit {
     public modalMenuService: ModalMenuService,
     public restaurantsService: RestaurantsService,
     public branchesService: BranchesRestaurantService,
+    private cartService: CartService,
     private BRS: BranchesRestaurantService,
   ) {
   }
 
   ngOnInit(): void {
     const keys = Object.keys(localStorage);
+    if(keys.length === 0)  {
+      this.dataFinal = []
+      return
+    }
     let subscriptions: Observable<any>[] = [];
     keys.forEach((key) => {
       subscriptions.push(this.BRS.getBrancheById(key));
@@ -46,7 +52,6 @@ export class OrderCartComponent implements OnInit {
           return response
         })
         this.dataFinal = finalData;
-        console.log(this.dataFinal);
       }, err => {
         // console.log(err);
       });
@@ -100,6 +105,8 @@ export class OrderCartComponent implements OnInit {
   deleteCarAll() {
     console.log('vaciar todo el carrito');
     localStorage.clear();
+    this.ngOnInit();
+    this.cartService.changeCart(false)
   }
   total() {
     console.log('pagar total');
