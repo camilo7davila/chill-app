@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
 import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -23,9 +25,13 @@ const routes: Routes = [
       {
         path: 'car',
         loadChildren: () => import('./order-cart/order-cart.module').then(m => m.OrderCartModule)
-      },
+      }
     ]
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  }
 ];
 
 @NgModule({

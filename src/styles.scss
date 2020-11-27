@@ -108,3 +108,36 @@ body::-webkit-scrollbar-thumb {
   margin: 0 auto;
   padding: 5px 10px !important;
 }
+
+.mat-form-field-underline {
+  background-image: linear-gradient(to right,#aec96b, #cad32c);
+  height: 2px !important;
+  transform: none !important;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.mat-form-field-label {
+  color: rgba($color: #000000, $alpha: 0.6) !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-ripple {
+  top: 0;
+  height: 4px;
+  overflow: hidden;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-image: linear-gradient(to right,#aec96b, #cad32c) !important;
+}
+
+.mat-error {
+  color: $c-chill-red;
+}
+
+a {
+  text-decoration: none;
+  color: $c-white;
+}

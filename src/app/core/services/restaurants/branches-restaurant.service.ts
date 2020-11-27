@@ -65,6 +65,10 @@ export class BranchesRestaurantService {
       )
   }
 
+  getBrancheById(idBranch) {
+    return this.afs.doc<any>('RestaurantBranches/'+ idBranch).valueChanges();
+  }
+
 
 
 

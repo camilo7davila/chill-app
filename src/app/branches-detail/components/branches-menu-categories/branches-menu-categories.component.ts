@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { Branches, BranchesMC, BranchesM } from 'src/app/core/interfaces/restaurant.interface';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { ModalMenuService } from 'src/app/core/services/modal/modal-menu.service';
 import { BranchesRestaurantService } from 'src/app/core/services/restaurants/branches-restaurant.service';
 
@@ -23,30 +25,35 @@ export class BranchesMenuCategoriesComponent implements OnInit {
 
   constructor(
     private brancheRestaurantService: BranchesRestaurantService,
-    private modalServiceM: ModalMenuService
-
-    // private route: ActivatedRoute,
+    private modalServiceM: ModalMenuService,
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
-    // console.log(this.idBranchess);
     this.brancheRestaurantService.getBrachesMenuCategories(this.idBranchess)
       .subscribe(data => {
-        // console.log('menucategoriasss', data);
         this.menuCategories = data
-        // console.log('menucat', this.menuCategories);
       })
 
     this.brancheRestaurantService.getBrachesMenu(this.idBranchess)
       .subscribe(data => {
-        //  console.log('menufinal', data);
         this.menu = data
-        // console.log('menu asignado', this.menu);
       })
   }
 
   menuSelect(menu) {
-    this.modalServiceM.changeStateModalMenu(this.idBranchess, menu)
+    this.authService.userIsLogged()
+      .then((isLogged) => {
+        if(isLogged) {
+          this.authService.setCurrentUser(isLogged.email, isLogged.uid)
+          this.modalServiceM.changeStateModalMenu(this.idBranchess, menu)
+        } else {
+          sessionStorage.setItem('urlUser', this.idBranchess);
+          this.router.navigate(['/auth/login'])
+        }
+      })
+      .catch((e) => console.log(e))
   }
 
 }

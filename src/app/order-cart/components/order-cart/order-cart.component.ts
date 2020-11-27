@@ -5,6 +5,8 @@ import { Branches, MenuDatail } from 'src/app/core/interfaces/restaurant.interfa
 import { RestaurantsService } from 'src/app/core/services/restaurants/restaurants.service';
 import { BranchesRestaurantService } from 'src/app/core/services/restaurants/branches-restaurant.service';
 import { Key } from 'protractor';
+import { finished } from 'stream';
+import { finalize } from 'rxjs/operators';
 
 
 @Component({
@@ -14,10 +16,11 @@ import { Key } from 'protractor';
 })
 export class OrderCartComponent implements OnInit {
 
-  public data: any
+  public data: any[];
 
   public priceTotalPay: number;
   public quantityTotalPay: number;
+  public totalData: any[] = [];
 
 
   constructor(
@@ -37,30 +40,35 @@ export class OrderCartComponent implements OnInit {
     const total = []
     keys.forEach((key) => {
       let data = JSON.parse(localStorage.getItem(key));
-
-      const dataToAdd = {
-        idBranche: key,
-        request: data
-      }
-      this.data = total
-      total.push(dataToAdd)
-      console.log('pedido total',this.data);
-      // this.BRS.getAllBranchesId().subscribe(data => console.log('sucursales', data))
-
-    // this.priceTotalPay = 0;
-    // const { totalPrice } = this.data;
-    // const sumTotalPrice = (invoiceAmount, nextTotalPrice) => invoiceAmount + nextTotalPrice;
-    // this.priceTotalPay = totalPrice.reduce(sumTotalPrice, 0);
-    // console.log('totalprice',this.priceTotalPay); 
-
-    // this.quantityTotalPay = 0;
-    // const { quantityTotal } = this.data;
-    // const sumQuantityTotal = (invoiceAmount, nextTotalQuantity) => invoiceAmount + nextTotalQuantity;
-    // this.quantityTotalPay = quantityTotal.reduce(sumQuantityTotal, 0);
-    // console.log('totalquantity ',this.quantityTotalPay); 
-      
+      this.BRS.getBrancheById(key)
+      .subscribe(responseBranch => {
+        const dataToAdd = {
+          idBranche: key,
+          request: data,
+          ...responseBranch
+        }
+        total.push(dataToAdd);
+      })
     })
 
+    setTimeout(() => {
+      this.data = total
+      console.log(total);
+      total.length !== 0 && this.calcTotal()
+    }, 1000);
+  }
+
+  calcTotal() {
+    this.data.forEach((data) => {
+
+      let countTotal = 0
+      data.request.forEach(element => {
+        countTotal += element.totalPrice
+      });
+      data['totalPrice']= countTotal;
+      this.totalData.push(data)
+    })
+    console.log(this.totalData);
   }
 
   deleteCar() {

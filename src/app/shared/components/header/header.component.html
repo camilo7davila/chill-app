@@ -3,11 +3,9 @@
     <img src="assets/images/logo_chill.svg" alt="icon" width="50">
   </div>
   <div>
-    <a mat-raised-button [routerLink]="['/car']"> 
-      <!-- <mat-icon>shopping_cart</mat-icon> -->
-      <!-- <mat-icon>add_shopping_cart</mat-icon> -->
+    <span *ngIf="authService.currentUser"> {{authService.currentUser}} </span>
+    <a mat-raised-button [routerLink]="['/car']">
       <mat-icon> fastfood</mat-icon>
-      <!-- <mat-icon> restaurant</mat-icon> -->
-  </a>
+    </a>
   </div>
 </mat-toolbar>

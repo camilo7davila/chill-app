@@ -1,0 +1,80 @@
+<div class="container-fluid">
+  <div class="container__main">
+    <section class="container__main--header">
+      <h3>Registrate!</h3>
+      <span>Ya estas registrado? <b><a routerLink="/auth/login">ingresa a Chill </a></b> </span>
+    </section>
+    <section class="container__main--card">
+      <mat-card>
+        <div class="img">
+          <img src="../../../../assets/images/logoRojo.jpeg" alt="logo" width="80" height="80">
+        </div>
+        <div class="body">
+          <form [formGroup]="loginForm" (ngSubmit)="register()">
+            <div class="form-group">
+              <mat-form-field class="example-full-width w-100">
+                <mat-label>Nombre</mat-label>
+                <input
+                  formControlName="name"
+                  matInput
+                  name="email"
+                >
+                <mat-error *ngIf="nameFieldIsInvalid">
+                  Nombre invalido
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field class="example-full-width w-100">
+                <mat-label>Email</mat-label>
+                <input
+                  formControlName="email"
+                  matInput
+                  name="email"
+                >
+                <mat-error *ngIf="emailFieldIsInvalid">
+                  Por favor entrar un email valido
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-form-field class="example-full-width w-100">
+                <mat-label>Password</mat-label>
+                <input
+                  formControlName="password"
+                  matInput
+                  autocomplete="off"
+                  name="password"
+                  type="password"
+                >
+                <mat-error *ngIf="passwordField.hasError('minlength')">
+                  Contraseña muy corta
+                </mat-error>
+                <mat-error *ngIf="passwordField.hasError('maxlength')">
+                  La contraseña es de maximo 10 caracteres
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div style="margin-top: 40px;">
+              <button 
+                mat-raised-button 
+                color="accent" 
+                class="w-100"
+                [disabled]="loginForm.invalid"
+                type="submit"
+              >
+                <ng-container *ngIf="!isLoading">Registrarse</ng-container>
+                <div 
+                  *ngIf="isLoading" 
+                  style="justify-content: center; align-items: center; display: flex; height: 36px;"
+                >
+                  <mat-spinner [diameter]="20"></mat-spinner>
+                </div>
+              </button>
+            </div>
+          </form>
+        </div>
+      </mat-card>
+    </section>
+  </div>
+</div>

@@ -8,6 +8,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatTabsModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatExpansionModule
+    MatExpansionModule,
   ],
   exports: [
     MatInputModule,
@@ -30,7 +31,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatTabsModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressSpinnerModule
   ]
 })
 export class MaterialModule { }
