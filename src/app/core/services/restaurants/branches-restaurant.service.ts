@@ -4,9 +4,7 @@ import { Observable } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
 import { Branches, BranchesMC,BranchesM, MenuDatail } from '../../interfaces/restaurant.interface';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'any' })
 export class BranchesRestaurantService {
   constructor(
     private afs: AngularFirestore
