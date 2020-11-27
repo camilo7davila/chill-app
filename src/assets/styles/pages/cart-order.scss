@@ -1,0 +1,10 @@
+.page-cart-order {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    & .mat-expansion-panel-body {
+        width: auto !important;
+    }
+}

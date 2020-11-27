@@ -1,35 +1,42 @@
-@import '../../../../assets/styles/mixins/font-style.scss';
-@import '../../../../assets/styles/theme/variables.scss';
+@import "../../../../assets/styles/mixins/font-style.scss";
+@import "../../../../assets/styles/theme/variables.scss";
 
 :host {
-  margin: 10px auto;
-  overflow-x: auto;
-  padding: 0 15px;
-  margin: 10px ;
+    margin: 10px auto;
+    overflow-x: auto;
+    padding: 0 15px;
+    margin: 10px;
 }
 
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.container {
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // height: auto;
+    // margin: 10px auto;
+    // justify-items: center;
+    // overflow-x: auto;
+
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-gap: 0px;
     height: auto;
+    width: auto;
     margin: 10px auto;
     justify-items: center;
-    // margin: 0px 0px 0px 0px;
     overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 1280px;
+    padding: 0 0 10px 0;
 }
 .container::-webkit-scrollbar {
     -webkit-appearance: none;
 }
-
 .container::-webkit-scrollbar:horizontal {
     height: 10px;
 }
-
 .container::-webkit-scrollbar-thumb {
     background-color: $c-chill-red;
     border-radius: 30px;
     border: 2px solid white;
 }
-
-  

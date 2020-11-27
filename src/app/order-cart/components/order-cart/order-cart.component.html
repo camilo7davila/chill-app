@@ -1,5 +1,49 @@
-<section>
-    <div *ngFor="let data of dataFinal">
+<main class="page-cart-order">
+    <div>
+        <mat-accordion *ngFor="let data of dataFinal">
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{data.address}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                       Total a pagar: <strong> ${{data.totalBranch | number }}</strong>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <section>
+                    <div>
+                        <div class="list" *ngFor="let data of data.request">
+                            <img mat-card-image [src]="data.imagenMenu" alt="logo menu">
+                            <p>{{data.quantityTotal}}</p>
+                            <div>
+                                <h4>{{data.nameMenu}}</h4>
+                            </div>
+                            <div>
+                                <h5>${{data.totalPrice | number}}</h5>
+                            </div>
+                            <!-- <div>
+                                <mat-icon class="pointer" mat-raised-button (click)="deleteCar()">delete</mat-icon>
+                            </div> -->
+                        </div>
+                        <div class="button">
+                            <button mat-button (click)="total()">Pagar total  ${{ data.totalBranch | number}}</button>
+                        </div>
+                    </div>
+                </section>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <div class="button">
+            <button mat-button (click)="deleteCarAll()">Vaciar Carrito</button>
+        </div>
+    </div>
+</main>
+
+
+
+
+
+<!-- <section> -->
+<!-- <div *ngFor="let data of dataFinal">
         {{data.totalBranch}}
         <div class="list" *ngFor="let data of data.request">
             <img mat-card-image [src]="data.imagenMenu" alt="logo menu">
@@ -16,12 +60,12 @@
             <button mat-button (click)="deleteCarAll()">Vaciar Carrito</button>
             <button mat-button (click)="total()">Pagar total</button>
         </div> -->
-        <div class="button">
+<!-- <div class="button">
             <button mat-button (click)="deleteCarAll()">Vaciar Carrito</button>
             <button mat-button (click)="total()">Pagar total {{priceTotalPay}}</button>
         </div>
-    </div>
-</section>
+    </div> -->
+<!-- </section> -->
 
 
 

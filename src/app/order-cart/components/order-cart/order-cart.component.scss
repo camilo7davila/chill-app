@@ -1,6 +1,30 @@
 @import "../../../../assets/styles/mixins/mixin.scss";
 @import "../../../../assets/styles/theme/variables.scss";
 
+main {
+    min-height: calc(100vh - 64px - 80px);
+}
+
+mat-accordion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 10px 0;
+}
+mat-expansion-panel {
+    width: 600px;
+}
+mat-expansion-panel-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+mat-panel-title{
+    @include font-style($c-black, "$f-avenir-bold", 1.6rem);
+}
+mat-panel-description{
+    @include font-style($c-black, "$f-avenir", 1.6rem);
+}
 section {
     width: 350px;
     margin: 0 auto;
@@ -12,6 +36,7 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 2px;
 }
 img {
     width: 70px;
@@ -19,8 +44,12 @@ img {
     object-fit: cover;
     object-position: center;
     margin: 0 !important;
-    padding: 2px;
-    // border-radius: 10px;
+    padding: 2px !important;
+    position: relative;
+}
+p{
+    @include font-style($c-white-gray, "$f-avenir-bold", 3rem);
+    position: absolute;
 }
 h4 {
     @include font-style($c-black, "$f-avenir", 1.6rem);
@@ -36,22 +65,22 @@ button {
     height: 40px;
 }
 .button {
-    width: inherit;
+    // width: inherit;
     height: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 5px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
     .list {
         width: 100%;
     }
-    .button {
-        width: 100%;
+    section {
+        width: 230px;
     }
-    section{
+    mat-expansion-panel {
         width: 100%;
     }
 }
