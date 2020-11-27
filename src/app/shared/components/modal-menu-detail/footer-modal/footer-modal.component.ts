@@ -44,7 +44,7 @@ export class FooterModalComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.menu = this.modalMenuService.getIdMenuSelected;
-    console.log(this.menu)
+    // console.log(this.menu)
     this.totalPrice = this.menu.price;
     this.valueDish = this.menu.price;
   }

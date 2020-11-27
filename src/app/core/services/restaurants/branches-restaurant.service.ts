@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 import { Branches, BranchesMC,BranchesM, MenuDatail } from '../../interfaces/restaurant.interface';
 
 @Injectable({
@@ -66,7 +66,9 @@ export class BranchesRestaurantService {
   }
 
   getBrancheById(idBranch) {
-    return this.afs.doc<any>('RestaurantBranches/'+ idBranch).valueChanges();
+    return this.afs.doc<any>('RestaurantBranches/'+ idBranch).valueChanges().pipe(
+      take(1)
+    )
   }
 
 

@@ -1,11 +1,12 @@
 <section>
-    <div *ngFor="let dataaa of data">
-        {{dataaa.idBranche}}
-        <div class="list" *ngFor="let dataa of dataaa.request">
-            <img mat-card-image [src]="dataa.imagenMenu" alt="logo menu">
+    <div *ngFor="let data of dataToAddBranche">
+        {{data.idBranche}}
+        {{data.totalPrice}}
+        <div class="list" *ngFor="let data of data.request">
+            <img mat-card-image [src]="data.imagenMenu" alt="logo menu">
             <div>
-                <h4>{{dataa.nameMenu}}</h4>
-                <h5>${{dataa.totalPrice | number}}</h5>
+                <h4>{{data.nameMenu}}</h4>
+                <h5>${{data.totalPrice | number}}</h5>
             </div>
             <div>
                 <mat-icon class="pointer" mat-raised-button (click)="deleteCar()">delete</mat-icon>
@@ -22,3 +23,20 @@
         <button mat-button (click)="total()">Pagar total {{priceTotalPay}}</button>
     </div>
 </section>
+
+
+
+
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Self aware panel
+            </mat-panel-title>
+            <mat-panel-description>
+
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>I'm visible because I am open</p>
+    </mat-expansion-panel>
+</mat-accordion>
