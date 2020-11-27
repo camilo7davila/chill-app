@@ -1,7 +1,6 @@
 <section>
-    <div *ngFor="let data of dataToAddBranche">
-        {{data.idBranche}}
-        {{data.totalPrice}}
+    <div *ngFor="let data of dataFinal">
+        {{data.totalBranch}}
         <div class="list" *ngFor="let data of data.request">
             <img mat-card-image [src]="data.imagenMenu" alt="logo menu">
             <div>
@@ -17,17 +16,17 @@
             <button mat-button (click)="deleteCarAll()">Vaciar Carrito</button>
             <button mat-button (click)="total()">Pagar total</button>
         </div> -->
-    </div>
-    <div class="button">
-        <button mat-button (click)="deleteCarAll()">Vaciar Carrito</button>
-        <button mat-button (click)="total()">Pagar total {{priceTotalPay}}</button>
+        <div class="button">
+            <button mat-button (click)="deleteCarAll()">Vaciar Carrito</button>
+            <button mat-button (click)="total()">Pagar total {{priceTotalPay}}</button>
+        </div>
     </div>
 </section>
 
 
 
 
-<mat-accordion>
+<!-- <mat-accordion>
     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
             <mat-panel-title>
@@ -39,4 +38,4 @@
         </mat-expansion-panel-header>
         <p>I'm visible because I am open</p>
     </mat-expansion-panel>
-</mat-accordion>
+</mat-accordion> -->

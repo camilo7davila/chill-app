@@ -1,12 +1,10 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
 import { ModalMenuService } from 'src/app/core/services/modal/modal-menu.service';
-import { Branches, MenuDatail } from 'src/app/core/interfaces/restaurant.interface';
 import { RestaurantsService } from 'src/app/core/services/restaurants/restaurants.service';
 import { BranchesRestaurantService } from 'src/app/core/services/restaurants/branches-restaurant.service';
 
 import { forkJoin, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 
 @Component({
@@ -16,8 +14,8 @@ import { tap } from 'rxjs/operators';
 })
 export class OrderCartComponent implements OnInit {
 
-  public data: any[] = [];
-  public dataToAddBranche :any[]=[]
+  public dataFinal: any[] = [];
+  public dataToAddBranche: any[] = []
 
   public priceTotalPay: number;
   public quantityTotalPay: number;
@@ -33,55 +31,67 @@ export class OrderCartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // const keys = Object.keys(localStorage);
-    // // console.log(keys);
-    // let subscriptions: Observable<any>[] = [];
-    // keys.forEach((key) => {
-    //   subscriptions.push(this.BRS.getBrancheById(key));
-    // });
-    // // console.log(subscriptions);
-    // const join = forkJoin(subscriptions);
-    // // Promise.all(subscriptions).then(data => console.log(data)).catch(err => console.log(err));
-    
-    // join.subscribe((data: any[]) => {
-    //   console.log('entro', data);
-    // }, err => {
-    //   // console.log(err);
-    // });
-
     const keys = Object.keys(localStorage);
+    let subscriptions: Observable<any>[] = [];
     keys.forEach((key) => {
-      let data = JSON.parse(localStorage.getItem(key));
-      this.BRS.getBrancheById(key)
-      .subscribe(responseBranch => {
-        const dataToAdd  = {
-          idBranche: key,
-          request: data,
-          ...responseBranch
-        };
-        let countTotal = 0
-        dataToAdd.request.forEach(element => {
-          countTotal += element.totalPrice
-        });
-        dataToAdd['totalPrice'] = countTotal;
-        console.log(dataToAdd);
-        this.data.push(dataToAdd);
-      })
-      // console.log(data);
-    })
+      subscriptions.push(this.BRS.getBrancheById(key));
+    });
+
+    forkJoin(subscriptions)
+      .subscribe((data: any[]) => {
+        const finalData = data.map((response, index) => {
+          response['idBranch'] = keys[index];
+          response['request'] = JSON.parse(localStorage.getItem(keys[index]));
+          response['totalBranch'] = this.calcRequest(response.request);
+          return response
+        })
+        this.dataFinal = finalData;
+        console.log(this.dataFinal);
+      }, err => {
+        // console.log(err);
+      });
+
+
+    // Promise.all(subscriptions).then(data => console.log(data)).catch(err => console.log(err));
+
+    // const keys = Object.keys(localStorage);
+    // keys.forEach((key) => {
+    //   let dataLoca = JSON.parse(localStorage.getItem(key));
+    //   this.BRS.getBrancheById(key)
+    //   .subscribe(responseBranch => {
+    //     const dataToAdd  = {
+    //       idBranche: key,
+    //       request: dataLoca,
+    //       ...responseBranch
+    //     };
+    //     let countTotal = 0
+    //     dataToAdd.request.forEach(element => {
+    //       countTotal += element.totalPrice
+    //     });
+    //     dataToAdd['totalPrice'] = countTotal;
+    //     this.data.push(dataToAdd);
+    //     console.log(this.data);
+    //   })
+    // })
   }
-  
-  // calcTotal() {
-  //   this.data.forEach((data) => {
-  //     let countTotal = 0
-  //     data.request.forEach(element => {
-  //       countTotal += element.totalPrice
-  //     });
-  //     data['totalPrice']= countTotal;
-  //     this.totalData.push(data)
-  //   })
-  //   console.log(this.totalData);
-  // }
+
+  calcRequest(request: any[]): number {
+    const sumTotal = (invoiceAmount, nextItem) => invoiceAmount + nextItem.totalPrice;
+    let totalBranch = request.reduce(sumTotal, 0);
+    return totalBranch
+  }
+
+  calcTotal(branches: any[]) {
+    const request = branches.map((branch) => branch.request);
+    request.forEach((req, index) => {
+      const sumTotal = (invoiceAmount, nextItem) => invoiceAmount + nextItem.totalPrice;
+      let totalBranch = req.reduce(sumTotal, 0);
+      branches[index].totalBranch = totalBranch
+    })
+
+    this.dataFinal = branches
+    console.log(this.dataFinal);
+  }
 
   deleteCar() {
     console.log('eliminar plato');
