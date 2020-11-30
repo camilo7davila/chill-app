@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <div class="container__main">
+        <section class="container__main--header">
+            <h3>Bienvenido</h3>
+        </section>
+        <section class="container__main--card">
+            <mat-card>
+                <div class="img">
+                    <img src="../../../../assets/images/logoRojo.jpeg" alt="logo" width="80" height="80">
+                </div>
+                <div class="body">
+                    <form [formGroup]="phoneForm">
+                        <div class="form-group">
+                            <mat-form-field class="example-full-width w-100">
+                                <div class="input-phone">
+                                    <div>
+                                        <img src="../../../../assets/images/Colombia.svg"
+                                            alt="bandera">
+                                        <span>+57</span>
+                                    </div>
+                                    <input type="number" id="phoneNumber" min="0" formControlName="phone" placeholder="Ingresa tu número">
+                                </div>
+                            </mat-form-field>
+                        </div>
+                        <div style="margin-top: 40px;">
+                            <div id="recaptcha-container"></div>
+                            <button mat-raised-button color="accent" class="w-100" (click)="send()" [disabled]="disableButton"
+                                type="submit"
+                                [routerLink]="['/auth/login-phone-verification']"
+                                >
+                                Enviar codigo                                
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <!-- <section>
+                    <h1>Iniciar sesion</h1>
+                    <div>
+                        <input type="text" id="phoneNumber" placeholder="Numero de celular" value="">
+                        <button class="number" id="numberButton"> Enviar </button>
+                        <p id="recaptcha-container"></p>
+                    </div>
+                    <div class="validate">
+                        <input type="text" id="code" placeholder="codigo">
+                        <button class="validatebtn" id="validate">Validar</button>
+                    </div>
+                </section> -->
+
+            </mat-card>
+        </section>
+    </div>
+</div>

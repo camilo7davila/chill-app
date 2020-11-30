@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <div class="container__main">
+        <section class="container__main--header">
+            <h3>Codigo de verificacion</h3>
+        </section>
+        <section class="container__main--card">
+            <mat-card>
+                <div class="img">
+                    <img src="../../../../assets/images/logoRojo.jpeg" alt="logo" width="80" height="80">
+                </div>
+                <div class="body">
+                    <form [formGroup]="">
+                        <div class="form-group">
+                            <input type="number" min="0" max="9" >
+                            <input type="number" min="0" max="9" >
+                            <input type="number" min="0" max="9" >
+                            <input type="number" min="0" max="9" >
+                            <input type="number" min="0" max="9" >
+                            <input type="number" min="0" max="9" >
+                        </div>
+
+                        <div style="margin-top: 40px;">
+                            <button mat-raised-button color="accent" class="w-100" 
+                                type="submit">
+                                Verificar 
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </mat-card>
+        </section>
+    </div>
+</div>

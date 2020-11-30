@@ -1,0 +1,64 @@
+@import "../../../../assets/styles/mixins/mixin.scss";
+@import "../../../../assets/styles/theme/variables.scss";
+
+.container-fluid {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("/assets/images/fondoLogin.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container__main {
+    width: 400px;
+
+    &--header {
+        margin-bottom: 5rem;
+        text-align: center;
+        & h3 {
+            @include font-style($c-white, "$f-avenir-bold", 3rem);
+            margin-bottom: 1rem;
+        }
+    }
+
+    &--card {
+        position: relative;
+        & .img {
+            display: flex;
+            justify-content: center;
+            & img {
+                border-radius: 50%;
+                position: absolute;
+                top: -40px;
+            }
+        }
+
+        & .title {
+            margin-top: 40px;
+            text-align: center;
+        }
+    }
+
+    & form {
+        width: 70%;
+        margin: 3rem auto 1.5rem;
+    }
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.input-phone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    & img {
+        margin: 0;
+        padding: 0;
+        width: 20px;
+        height: 20px;
+    }
+}

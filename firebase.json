@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site":"customer-app-chill",
+    "public": "dist/chill-user",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

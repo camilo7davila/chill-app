@@ -37,4 +37,8 @@ export class AuthService {
   // updateProfilUser() {
   //   return this.AFA.updateCurrentUser()
   // }
+
+  get windowRef() {
+    return window;
+  }
 }
