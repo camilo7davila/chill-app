@@ -10,6 +10,8 @@ export class AuthService {
   get currentUser() { return this.userLogged }
   get currentUserUid() { return this.userUid }
 
+  get windowRef() { return window }
+
   constructor(
     private AFA: AngularFireAuth
   ) { }
@@ -38,7 +40,5 @@ export class AuthService {
   //   return this.AFA.updateCurrentUser()
   // }
 
-  get windowRef() {
-    return window;
-  }
+
 }

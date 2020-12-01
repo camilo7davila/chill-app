@@ -1,9 +1,10 @@
 <div class="container-fluid">
     <div class="container__main">
         <section class="container__main--header">
-            <h3>Bienvenido</h3>
+            <h3 *ngIf="isFirstStep">Bienvenido</h3>
+            <h3 *ngIf="!isFirstStep">Ingrese el codigo</h3>
         </section>
-        <section class="container__main--card">
+        <section *ngIf="isFirstStep" class="container__main--card">
             <mat-card>
                 <div class="img">
                     <img src="../../../../assets/images/logoRojo.jpeg" alt="logo" width="80" height="80">
@@ -18,16 +19,20 @@
                                             alt="bandera">
                                         <span>+57</span>
                                     </div>
-                                    <input type="number" id="phoneNumber" min="0" formControlName="phone" placeholder="Ingresa tu número">
                                 </div>
+                                <input matInput id="phoneNumber" formControlName="phone" placeholder="Ingresa tu número">
                             </mat-form-field>
                         </div>
                         <div style="margin-top: 40px;">
                             <div id="recaptcha-container"></div>
-                            <button mat-raised-button color="accent" class="w-100" (click)="send()" [disabled]="disableButton"
+                            <button
+                                mat-raised-button
+                                color="accent"
+                                class="w-100"
+                                (click)="send()" 
+                                [disabled]="phoneForm.invalid"
                                 type="submit"
-                                [routerLink]="['/auth/login-phone-verification']"
-                                >
+                            >
                                 Enviar codigo                                
                             </button>
                         </div>
@@ -47,6 +52,10 @@
                 </section> -->
 
             </mat-card>
+        </section>
+
+        <section *ngIf="!isFirstStep">
+            estamos en paso 3
         </section>
     </div>
 </div>
