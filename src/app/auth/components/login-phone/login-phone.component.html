@@ -4,23 +4,24 @@
             <h3 *ngIf="isFirstStep">Bienvenido</h3>
             <h3 *ngIf="!isFirstStep">Ingrese el codigo</h3>
         </section>
-        <section *ngIf="isFirstStep" class="container__main--card">
+        <section class="container__main--card">
             <mat-card>
                 <div class="img">
                     <img src="../../../../assets/images/logoRojo.jpeg" alt="logo" width="80" height="80">
                 </div>
-                <div class="body">
+                <div *ngIf="isFirstStep" class="body">
                     <form [formGroup]="phoneForm">
                         <div class="form-group">
                             <mat-form-field class="example-full-width w-100">
+                                <p>Ingresa tu número</p>
                                 <div class="input-phone">
-                                    <div>
+                                    <div class="input-phone">
                                         <img src="../../../../assets/images/Colombia.svg"
                                             alt="bandera">
                                         <span>+57</span>
                                     </div>
+                                    <input matInput id="phoneNumber" formControlName="phone" placeholder=" ">
                                 </div>
-                                <input matInput id="phoneNumber" formControlName="phone" placeholder="Ingresa tu número">
                             </mat-form-field>
                         </div>
                         <div style="margin-top: 40px;">
@@ -36,26 +37,55 @@
                                 Enviar codigo                                
                             </button>
                         </div>
+                        <div style="margin-top: 40px;">
+                            <div id="recaptcha-container"></div>
+                            <button
+                                mat-raised-button
+                                class="w-100"
+                                type="submit"
+                                (click)="verifyfacebook()" 
+                                [disabled]="googleForm.invalid"
+                            >
+                            <mat-icon> <img src="./../../../../assets/images/facebook_icon-icons.com_53612.svg" alt=""></mat-icon>
+                                Continuar con facebook                                
+                            </button>
+                        </div>
+                        <div style="margin-top: 40px;">
+                            <div id="recaptcha-container"></div>
+                            <button
+                                mat-raised-button
+                                class="w-100"
+                                (click)="verifygoogle()" 
+                                [disabled]="googleForm.invalid"
+                            >
+                            <mat-icon> <img src="./../../../../assets/images/google_icon-icons.com_62736.svg" alt=""> </mat-icon>
+                                Acceder con google                                
+                            </button>
+                        </div>
                     </form>
                 </div>
-                <!-- <section>
-                    <h1>Iniciar sesion</h1>
-                    <div>
-                        <input type="text" id="phoneNumber" placeholder="Numero de celular" value="">
-                        <button class="number" id="numberButton"> Enviar </button>
-                        <p id="recaptcha-container"></p>
-                    </div>
-                    <div class="validate">
-                        <input type="text" id="code" placeholder="codigo">
-                        <button class="validatebtn" id="validate">Validar</button>
-                    </div>
-                </section> -->
-
+                <div *ngIf="!isFirstStep" class="body">
+                    <form [formGroup]="codeForm">
+                        <div class="form-group">
+                            <input type="number" min="0" max="9" formControlName="code1" id="code1">
+                            <input type="number" min="0" max="9" formControlName="code2" id="code2">
+                            <input type="number" min="0" max="9" formControlName="code3" id="code3">
+                            <input type="number" min="0" max="9" formControlName="code4" id="code4">
+                            <input type="number" min="0" max="9" formControlName="code5" id="code5">
+                            <input type="number" min="0" max="9" formControlName="code6" id="code6">
+                        </div>
+                        <div style="margin-top: 40px;">
+                            <button mat-raised-button color="accent" class="w-100" 
+                                [disabled]="codeForm.invalid"
+                                type="submit" 
+                                id="sign-in-button"
+                                (click)="verify(codeForm)">
+                                Verificar 
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </mat-card>
-        </section>
-
-        <section *ngIf="!isFirstStep">
-            estamos en paso 3
         </section>
     </div>
 </div>

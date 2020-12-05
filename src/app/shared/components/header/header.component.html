@@ -3,7 +3,11 @@
     <img src="assets/images/logo_chill.svg" alt="icon" width="50">
   </div>
   <div>
-    <!-- <span *ngIf="authService.currentUser"> {{authService.currentUser}} </span> -->
+    <a mat-raised-button [routerLink]="['/home']">Inicio</a>
+
+    <a mat-raised-button (click)="closeSesion()" >Cerrar sesión</a>
+
+    <!-- <span *ngIf="authService.currentUser"> {{authService.currentUsers}} </span> -->
     <a mat-raised-button [routerLink]="['/car']" [matBadge]="totalRequest" matBadgeColor="primary">
       <mat-icon> fastfood</mat-icon>
     </a>

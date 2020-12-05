@@ -41,18 +41,18 @@
     }
 
     & form {
-        width: 70%;
+        width: 65%;
         margin: 3rem auto 1.5rem;
     }
 }
 
 .form-group {
-    margin-bottom: 2rem;
+    margin-bottom: -3.5rem;
 }
 
 .input-phone {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
     & img {
@@ -61,4 +61,24 @@
         width: 20px;
         height: 20px;
     }
+    span{
+        margin: 0 0 1px 0;
+    };
+
 }
+mat-form-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+mat-icon{
+    & img{
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+}
+
+

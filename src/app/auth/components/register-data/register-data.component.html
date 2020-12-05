@@ -1,1 +1,167 @@
-<p>register-data works!</p>
+<div class="container-fluid">
+    <div class="container__main">
+      <section class="container__main--header">
+        <h3>Registrate!</h3>
+      </section>
+      <section class="container__main--card">
+        <mat-card>
+          <div class="img">
+            <img src="../../../../assets/images/logoRojo.jpeg" alt="logo" width="80" height="80">
+          </div>
+          <div class="body" *ngIf="providerQuery === 'phone'">
+            <form [formGroup]="loginForm" (ngSubmit)="registerPhone()">
+              <div class="form-group">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Nombre</mat-label>
+                  <input
+                    formControlName="name"
+                    matInput
+                    name="name"
+                  >
+                  <mat-error *ngIf="nameFieldIsInvalid">
+                    Nombre invalido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Apellido</mat-label>
+                  <input
+                    formControlName="lastname"
+                    matInput
+                    name="lastname"
+                  >
+                  <mat-error *ngIf="lastnameFieldIsInvalid">
+                    Apellido invalido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Email</mat-label>
+                  <input
+                    formControlName="email"
+                    matInput
+                    name="email"
+                  >
+                  <mat-error *ngIf="emailFieldIsInvalid">
+                    Por favor entrar un email valido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Nombre de usuario</mat-label>
+                  <input
+                    formControlName="nameuser"
+                    matInput
+                    name="nameuser"
+                  >
+                  <mat-error *ngIf="nameuserFieldIsInvalid">
+                    Nombre de usuario invalido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Teléfono</mat-label>
+                  <input
+                    formControlName="phone"
+                    matInput
+                    name="phone"
+                  >
+                  <mat-error *ngIf="phoneFieldIsInvalid">
+                    Telefono invalido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div style="margin-top: 40px;">
+                <button 
+                  mat-raised-button 
+                  color="accent" 
+                  class="w-100"
+                  [disabled]="loginForm.invalid"
+                  type="submit"
+                >
+                  <ng-container *ngIf="!isLoading">Registrarse</ng-container>
+                  <div 
+                    *ngIf="isLoading" 
+                    style="justify-content: center; align-items: center; display: flex; height: 36px;"
+                  >
+                    <mat-spinner [diameter]="20"></mat-spinner>
+                  </div>
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="body" *ngIf="providerQuery === 'google'">
+            <form [formGroup]="loginForm" (ngSubmit)="registerGoogle()">
+              
+              <div class="form-group">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Nombre de usuario</mat-label>
+                  <input
+                    formControlName="nameuser"
+                    matInput
+                    name="nameuser"
+                  >
+                  <mat-error *ngIf="nameuserFieldIsInvalid">
+                    Nombre de usuario invalido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div style="margin-top: 40px;">
+                <button 
+                  mat-raised-button 
+                  color="accent" 
+                  class="w-100"
+                  type="submit"
+                >
+                  <ng-container *ngIf="!isLoading">Registrarse</ng-container>
+                  <div 
+                    *ngIf="isLoading" 
+                    style="justify-content: center; align-items: center; display: flex; height: 36px;"
+                  >
+                    <mat-spinner [diameter]="20"></mat-spinner>
+                  </div>
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="body" *ngIf="providerQuery === 'facebook'">
+            <form [formGroup]="loginForm" (ngSubmit)="registerFacebook()">
+              <div class="form-group">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Nombre de usuario</mat-label>
+                  <input
+                    formControlName="nameuser"
+                    matInput
+                    name="nameuser"
+                  >
+                  <mat-error *ngIf="nameuserFieldIsInvalid">
+                    Nombre de usuario invalido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div style="margin-top: 40px;">
+                <button 
+                  mat-raised-button 
+                  color="accent" 
+                  class="w-100"
+                  type="submit"
+                >
+                  <ng-container *ngIf="!isLoading">Registrarse</ng-container>
+                  <div 
+                    *ngIf="isLoading" 
+                    style="justify-content: center; align-items: center; display: flex; height: 36px;"
+                  >
+                    <mat-spinner [diameter]="20"></mat-spinner>
+                  </div>
+                </button>
+              </div>
+            </form>
+          </div>
+        </mat-card>
+      </section>
+    </div>
+  </div>

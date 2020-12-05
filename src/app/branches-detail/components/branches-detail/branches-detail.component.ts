@@ -45,13 +45,10 @@ export class BranchesDetailComponent implements OnInit {
         this.restaurant = restaurant;
       })
     })
-
-
   }
 
   showModalMenu(data) {
-    console.log('loque le llego al padre',data);
-    
+    // console.log('loque le llego al padre',data);
     // this.modalService.changeStateModalMenu()
   }
 

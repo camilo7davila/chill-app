@@ -85,7 +85,6 @@ export class RestaurantsComponent implements OnInit {
     })
   }
 
-
   categorySelected(event: Categories) {
     this.isFilter = true;
     if (event.id === '!') {

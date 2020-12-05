@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
-import { Branches, BranchesMC,BranchesM, MenuDatail } from '../../interfaces/restaurant.interface';
+import { Branches, BranchesMC, BranchesM, MenuDatail } from '../../interfaces/restaurant.interface';
 
 @Injectable({ providedIn: 'any' })
 export class BranchesRestaurantService {
@@ -37,7 +37,15 @@ export class BranchesRestaurantService {
   }
 
   getBrachesMenuCategories(idBranch: string): Observable<BranchesMC[]> {
-    return this.afs.collection<BranchesMC>('RestaurantBranches/' + idBranch + '/MenuCategories').valueChanges()
+    // return this.afs.collection<BranchesMC>('RestaurantBranches/' + idBranch + '/MenuCategories', ref => ref.orderBy('main')).valueChanges()
+    return this.afs.collection<BranchesMC>('RestaurantBranches/' + idBranch + '/MenuCategories', ref => ref.orderBy('main')).snapshotChanges()
+    .pipe(
+      map((actions) => actions.map( a => {
+        const data = a.payload.doc.data() as BranchesMC;
+        const id = a.payload.doc.id;
+        return { id, ...data};
+      }))
+    )
 
   }
   getBrachesMenu(idBranch: string): Observable<BranchesM[]> {
@@ -52,7 +60,7 @@ export class BranchesRestaurantService {
       )
   }
 
-  getAllMenusByIdMenu(idBranch: string,idMenu: string) {
+  getAllMenusByIdMenu(idBranch: string, idMenu: string) {
     return this.afs.collection<MenuDatail[]>('RestaurantBranches/' + idBranch + '/Menu/' + idMenu + '/MenuData')
       .snapshotChanges().pipe(
         map((actions) => actions.map(a => {
@@ -64,9 +72,14 @@ export class BranchesRestaurantService {
   }
 
   getBrancheById(idBranch) {
-    return this.afs.doc<any>('RestaurantBranches/'+ idBranch).valueChanges().pipe(
+    return this.afs.doc<any>('RestaurantBranches/' + idBranch).valueChanges().pipe(
       take(1)
     )
+  }
+
+
+  getCategorieById(idBranch, idCategorie) {
+    return this.afs.collection<BranchesMC>('RestaurantBranches/' + idBranch + '/MenuCategories' + idCategorie).valueChanges()
   }
 
 

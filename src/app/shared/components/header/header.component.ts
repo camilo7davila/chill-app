@@ -3,6 +3,10 @@ import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { CartService } from 'src/app/core/services/cart/cart.service';
 
+import { firebase } from '@firebase/app'
+import '@firebase/auth'
+import { AngularFireAuth } from "@angular/fire/auth";
+
 @Component({
   selector: 'app-header-component',
   templateUrl: './header.component.html',
@@ -16,6 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
     public authService: AuthService,
     private cartService: CartService,
+    private AFA: AngularFireAuth,
   ) { }
   
   ngOnInit(): void {
@@ -29,6 +34,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptionToDestroy$.unsubscribe();
+  }
+
+  closeSesion(){
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+    }).catch(function(error) {
+      // An error happened.
+    });
   }
 
 

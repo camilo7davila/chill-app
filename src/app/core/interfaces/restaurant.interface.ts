@@ -1,3 +1,5 @@
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
+
 export interface Restaurant {
   id: string,
   name: string,
@@ -30,14 +32,15 @@ export interface Branches {
   id?: string;
 }
 
-export interface BranchesMC{
+export interface BranchesMC {
   backgroundImage?: string,
   chillCategory?: boolean,
   layoutImage?: string,
   main?: number,
-  name?: string
+  name?: string,
+  id?: string;
 }
-export interface BranchesM{
+export interface BranchesM {
   active?: boolean,
   description?: string,
   image?: string,
@@ -48,7 +51,7 @@ export interface BranchesM{
   price?: number,
   recommended?: boolean
 }
-export interface MenuDatail{
+export interface MenuDatail {
   additions?: Addition[],
   customizations?: Customizations[],
   id?: string,
@@ -56,12 +59,12 @@ export interface MenuDatail{
   options?: Option[],
   sideDish?: SideDish[],
   totalPrice?: number,
-  quantityTotal?:number,
+  quantityTotal?: number,
   idBranch?: any,
-  nameMenu?:string,
-  imagenMenu?:string,
+  nameMenu?: string,
+  imagenMenu?: string,
 }
-export interface  Addition{
+export interface Addition {
   active: boolean,
   id: string,
   image: string,
@@ -71,13 +74,13 @@ export interface  Addition{
   activeUi?: boolean
 }
 
-export interface  Customizations{
-  active:boolean,
+export interface Customizations {
+  active: boolean,
   id: string,
-  image:string,
-  name:string,
+  image: string,
+  name: string,
 }
-export interface  Option{
+export interface Option {
   active: boolean;
   description: string;
   id: string;
@@ -87,7 +90,7 @@ export interface  Option{
   select: number;
   title: string;
 }
-export interface  Item{
+export interface Item {
   id: string,
   image: string,
   name: string,
@@ -95,16 +98,35 @@ export interface  Item{
 }
 export interface SideDish {
   active: boolean,
-  id:string,
+  id: string,
   items: Items[],
-  title:string,
+  title: string,
   total?: number
 }
-export interface  Items{
+export interface Items {
   id: string,
-  image:string,
-  name:string,
-  price:number,
+  image: string,
+  name: string,
+  price: number,
   total?: number
+}
+
+export interface User {
+  address?: string;
+  authenticationProvider?: authentication[] ;
+  birthday?: Date;
+  creationDate?:Date;
+  description?:string;
+  email?: string;
+  image?: string;
+  lastName?: string;
+  name?: string;
+  phoneNumber?:string;
+  sex?:number;
+  username?:string;
+}
+export interface authentication{
+  auth?:string;
+  provider?:string;
 }
 
