@@ -100,12 +100,18 @@
 .titlee {
     margin-bottom: 20px;
     font-weight: bold;
+    display: -webkit-box;
+    height: 26px;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
     @include font-style($c-black, "$f-avenir", 2rem, normal, capitalize);
 }
 .description {
     display: -webkit-box;
     height: 36px;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;

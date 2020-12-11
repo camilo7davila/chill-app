@@ -48,6 +48,9 @@
 
 .form-group {
     margin-bottom: -3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .input-phone {
@@ -80,5 +83,6 @@ mat-icon{
         left: 0px;
     }
 }
+
 
 

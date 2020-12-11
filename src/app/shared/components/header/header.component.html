@@ -5,11 +5,20 @@
   <div>
     <a mat-raised-button [routerLink]="['/home']">Inicio</a>
 
-    <a mat-raised-button (click)="closeSesion()" >Cerrar sesión</a>
+    <!-- <a mat-raised-button (click)="closeSesion()">Cerrar sesión</a> -->
 
-    <!-- <span *ngIf="authService.currentUser"> {{authService.currentUsers}} </span> -->
+    <!-- <span *ngIf="authService.currentUser"> {{authService.currentUser}} </span> -->
     <a mat-raised-button [routerLink]="['/car']" [matBadge]="totalRequest" matBadgeColor="primary">
       <mat-icon> fastfood</mat-icon>
     </a>
+
+    <a mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>how_to_reg</mat-icon>
+    </a>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item >{{'Hola, '}}{{UserLogin?.name || 'Sin usuario'}}  </button>
+      <button mat-menu-item> Agregar datos </button>
+      <button mat-menu-item (click)="closeSesion()">Cerrar sesión</button>
+    </mat-menu>
   </div>
 </mat-toolbar>

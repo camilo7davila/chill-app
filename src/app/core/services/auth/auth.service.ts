@@ -58,7 +58,6 @@ export class AuthService {
         }))
       )
   }
-
   getUserById(uid) {
     return this.afs.doc<any>('Users/' + uid).valueChanges()
   }

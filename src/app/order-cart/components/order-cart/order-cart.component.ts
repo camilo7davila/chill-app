@@ -6,6 +6,8 @@ import { BranchesRestaurantService } from 'src/app/core/services/restaurants/bra
 
 import { forkJoin, Observable } from 'rxjs';
 import { CartService } from 'src/app/core/services/cart/cart.service';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { ShoppingCartService } from 'src/app/core/services/cart/shopping-cart.service';
 
 
 @Component({
@@ -22,6 +24,8 @@ export class OrderCartComponent implements OnInit {
   public quantityTotalPay: number;
   public totalData: any[] = [];
 
+  public uidUser: string;
+  public totalRequestData: any;
 
   constructor(
     public modalMenuService: ModalMenuService,
@@ -29,55 +33,30 @@ export class OrderCartComponent implements OnInit {
     public branchesService: BranchesRestaurantService,
     private cartService: CartService,
     private BRS: BranchesRestaurantService,
+    public authService: AuthService,
+    private shoppinCartService: ShoppingCartService,
+    private brancheRestaurantService: BranchesRestaurantService,
+
   ) {
   }
-
   ngOnInit(): void {
-    const keys = Object.keys(localStorage);
-    if(keys.length === 0)  {
-      this.dataFinal = []
-      return
-    }
-    let subscriptions: Observable<any>[] = [];
-    keys.forEach((key) => {
-      subscriptions.push(this.BRS.getBrancheById(key));
-    });
-
-    forkJoin(subscriptions)
-      .subscribe((data: any[]) => {
-        const finalData = data.map((response, index) => {
-          response['idBranch'] = keys[index];
-          response['request'] = JSON.parse(localStorage.getItem(keys[index]));
-          response['totalBranch'] = this.calcRequest(response.request);
-          return response
+    setTimeout(() => {
+      this.authService.userIsLogged()
+        .then(isLogged => {
+          if (isLogged) {
+            // console.log(isLogged);
+            this.uidUser = isLogged.uid;
+            // console.log(this.uidUser);
+            // this.shoppinCartService.getdShoppingCartByIdUserTotal('uq0IcW7gRiRHmVIghlGnEGkUKel1')
+            this.shoppinCartService.getShoppingCartByIdUserTotal(this.uidUser)
+              .subscribe(data => {
+                this.totalRequestData = data
+                // console.log(this.totalRequestData);
+              })
+          } else {
+          }
         })
-        this.dataFinal = finalData;
-      }, err => {
-        // console.log(err);
-      });
-
-
-    // Promise.all(subscriptions).then(data => console.log(data)).catch(err => console.log(err));
-
-    // const keys = Object.keys(localStorage);
-    // keys.forEach((key) => {
-    //   let dataLoca = JSON.parse(localStorage.getItem(key));
-    //   this.BRS.getBrancheById(key)
-    //   .subscribe(responseBranch => {
-    //     const dataToAdd  = {
-    //       idBranche: key,
-    //       request: dataLoca,
-    //       ...responseBranch
-    //     };
-    //     let countTotal = 0
-    //     dataToAdd.request.forEach(element => {
-    //       countTotal += element.totalPrice
-    //     });
-    //     dataToAdd['totalPrice'] = countTotal;
-    //     this.data.push(dataToAdd);
-    //     console.log(this.data);
-    //   })
-    // })
+    }, 500)
   }
 
   calcRequest(request: any[]): number {
@@ -93,15 +72,14 @@ export class OrderCartComponent implements OnInit {
       let totalBranch = req.reduce(sumTotal, 0);
       branches[index].totalBranch = totalBranch
     })
-
     this.dataFinal = branches
     console.log(this.dataFinal);
   }
 
-  deleteCar() {
-    console.log('eliminar plato');
-    localStorage.removeItem('undefined');
-  }
+  // deleteCar() {
+  //   console.log('eliminar plato');
+  //   localStorage.removeItem('undefined');
+  // }
   deleteCarAll() {
     console.log('vaciar todo el carrito');
     localStorage.clear();

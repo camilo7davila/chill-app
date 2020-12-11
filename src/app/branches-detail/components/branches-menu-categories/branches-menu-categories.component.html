@@ -24,7 +24,12 @@
                 <p class="description"> {{menuRestaurant.description || 'Sin descripcion'}}</p>
                 <div class="container-bottom">
                     <span class="price">${{menuRestaurant.price | number}}</span>
-                    <button mat-button (click)="menuSelect(menuRestaurant)">Agregar</button>
+                    <button 
+                        mat-button 
+                        (click)="menuSelect(menuRestaurant)"
+                    >
+                        Agregar
+                    </button>
                 </div>
             </div>
         </mat-card>

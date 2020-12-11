@@ -122,6 +122,7 @@ export class LoginPhoneComponent implements OnInit, AfterViewInit {
       var errorMessage = error.message;
       var email = error.email;
       var credential = error.credential;
+      console.log('error', error);
     });
   }
 

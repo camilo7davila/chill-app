@@ -25,7 +25,7 @@ const routes: Routes = [
       {
         path: 'car',
         loadChildren: () => import('./order-cart/order-cart.module').then(m => m.OrderCartModule)
-      }
+      },
     ]
   },
   {
