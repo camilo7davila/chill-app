@@ -39,27 +39,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.authService.userIsLogged()
         .then(isLogged => {
           if (isLogged) {
-          // console.log(isLogged);
-          this.uidUser = isLogged.uid;
-          // console.log(this.uidUser);
-          this.shoppinCartService.getShoppingCartByIdUserTotal(this.uidUser)
-            // this.shoppinCartService.getShoppingCartByIdUserTotal('uq0IcW7gRiRHmVIghlGnEGkUKel1')
-            .subscribe(total =>
-              this.totalRequest = total.length
-              //  console.log(total.length)
-            )
-          this.authService.getUserById(this.uidUser).subscribe(data => {
-            // console.log(data);
-            this.UserLogin = data
-            // console.log(this.UserLogin);
-          })
-        } else {
-        }
+            // console.log(isLogged);
+            this.uidUser = isLogged.uid;
+            // console.log(this.uidUser);
+            this.shoppinCartService.getShoppingCartByIdUserTotal(this.uidUser)
+              // this.shoppinCartService.getShoppingCartByIdUserTotal('uq0IcW7gRiRHmVIghlGnEGkUKel1')
+              .subscribe(total =>
+                this.totalRequest = total.length
+                //  console.log(total.length)
+              )
+            this.authService.getUserById(this.uidUser).subscribe(data => {
+              // console.log(data);
+              this.UserLogin = data
+              // console.log(this.UserLogin);
+            })
+          } else {
+          }
         })
-
-
         .catch((e) => console.log(e))
-    }, 400)
+    }, 1000)
   }
   ngOnDestroy(): void {
     // this.subscriptionToDestroy$.unsubscribe();

@@ -18,19 +18,8 @@ export class ShoppingCartService {
     return this.afs.doc(`Users/${uid}/ShoppingCart/${idBranch}`).valueChanges()
   }
 
-  createShoppingCart(uid, idBranch, data) {
-    return this.afs.doc(`Users/${uid}/ShoppingCart/${idBranch}`).set(data)
-  }
-
-  newDishesShoppingCart(uid, idBranch, data) {
-    return this.afs.doc(`Users/${uid}/ShoppingCart/${idBranch}`).set(data)
-  }
-  getShoppingCartByIdUserTotal(uid) {
-    return this.afs.collection(`Users/${uid}/ShoppingCart`).valueChanges()
-  }
-  
-  // getShoppingCartByIdUserTotal(uid) {
-  //   return this.afs.collection<any>(`Users/${uid}/ShoppingCart`).snapshotChanges()
+  // getShoppingCartByIdUser(uid, idBranch) {
+  //   return this.afs.collection(`Users/${uid}/ShoppingCart/${idBranch}`).snapshotChanges()
   //     .pipe(
   //       map((actions) => actions.map(a => {
   //         const data = a.payload.doc.data() as any;
@@ -39,6 +28,29 @@ export class ShoppingCartService {
   //       }))
   //     )
   // }
+
+  createShoppingCart(uid, idBranch, data) {
+    return this.afs.doc(`Users/${uid}/ShoppingCart/${idBranch}`).set(data)
+  }
+
+  newDishesShoppingCart(uid, idBranch, data) {
+    return this.afs.doc(`Users/${uid}/ShoppingCart/${idBranch}`).set(data)
+  }
+
+  // getShoppingCartByIdUserTotal(uid) {
+  //   return this.afs.collection(`Users/${uid}/ShoppingCart`).valueChanges()
+  // }
+
+  getShoppingCartByIdUserTotal(uid) {
+    return this.afs.collection<any>(`Users/${uid}/ShoppingCart`).snapshotChanges()
+      .pipe(
+        map((actions) => actions.map(a => {
+          const data = a.payload.doc.data() as any;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        }))
+      )
+  }
 
   // getAllShoppingCart() {
   //   return this.afs.collection<ShoppingCart>('ShoppingCart').snapshotChanges()

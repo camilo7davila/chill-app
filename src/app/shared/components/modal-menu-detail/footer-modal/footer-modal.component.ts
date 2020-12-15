@@ -65,13 +65,12 @@ export class FooterModalComponent implements OnInit, OnChanges {
     this.uidUser = this.authService.currentUserUid;
     this.getShoppingCartByUser(this.uidUser)
 
-    console.log(this.mainForm);
-
   }
 
   //Obtener carrito de compras del usuario
   getShoppingCartByUser(uid: string) {
     this.shoppinCartService.getShoppingCartByIdUser(uid, this.modalMenuService.getIdBranch).subscribe((dataCart) => {
+      console.log(dataCart);
       this.isThereORderInCart = dataCart ? true : false;
       this.dataCartShopping = this.isThereORderInCart ? dataCart : false
     })
@@ -86,7 +85,7 @@ export class FooterModalComponent implements OnInit, OnChanges {
       this.calcTotal();
       return
     }
-    let joinItems = items.reduce((a, b) => a.concat(b));
+    let joinItems = items.reduce((a, b) => a.concat(b), []);
     const sumItems = (invoiceAmount, nextItem) => invoiceAmount + nextItem.price;
     this.totalOptions = joinItems.reduce(sumItems, 0);
     this.calcTotal();
@@ -132,7 +131,7 @@ export class FooterModalComponent implements OnInit, OnChanges {
   calcTotal() {
     this.totalPrice = ((this.totalOptions + this.valueDish) * this.quantityTotal) + (this.totalAdditions) + (this.totalSideDish);
   }
-
+  
   addCart() {
     this.mainForm.totalPrice = this.totalPrice;
     this.mainForm.quantityTotal = this.quantityTotal;
@@ -169,6 +168,7 @@ export class FooterModalComponent implements OnInit, OnChanges {
           take(1)
         )
         .subscribe((dataResponse: any) => {
+          console.log(dataResponse);
           dataResponse.dishes.push(finalForm.dishes);
           this.shoppinCartService.newDishesShoppingCart(this.uidUser, this.modalMenuService.getIdBranch, dataResponse)
             .then((result) => console.log(result))

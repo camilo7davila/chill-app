@@ -8,8 +8,8 @@ import { forkJoin, Observable } from 'rxjs';
 import { CartService } from 'src/app/core/services/cart/cart.service';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { ShoppingCartService } from 'src/app/core/services/cart/shopping-cart.service';
-
-
+import { OrderRequestService } from 'src/app/core/services/cart/order-request.service';
+import { ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'app-order-cart',
   templateUrl: './order-cart.component.html',
@@ -26,6 +26,7 @@ export class OrderCartComponent implements OnInit {
 
   public uidUser: string;
   public totalRequestData: any;
+  public request: number;
 
   constructor(
     public modalMenuService: ModalMenuService,
@@ -35,8 +36,9 @@ export class OrderCartComponent implements OnInit {
     private BRS: BranchesRestaurantService,
     public authService: AuthService,
     private shoppinCartService: ShoppingCartService,
+    private orderRequestService: OrderRequestService,
     private brancheRestaurantService: BranchesRestaurantService,
-
+    private route: ActivatedRoute,
   ) {
   }
   ngOnInit(): void {
@@ -50,8 +52,9 @@ export class OrderCartComponent implements OnInit {
             // this.shoppinCartService.getdShoppingCartByIdUserTotal('uq0IcW7gRiRHmVIghlGnEGkUKel1')
             this.shoppinCartService.getShoppingCartByIdUserTotal(this.uidUser)
               .subscribe(data => {
+                // console.log(data);
                 this.totalRequestData = data
-                // console.log(this.totalRequestData);
+                // this.request = this.totalRequestData.dishes.totalPrice
               })
           } else {
           }
@@ -59,34 +62,35 @@ export class OrderCartComponent implements OnInit {
     }, 500)
   }
 
-  calcRequest(request: any[]): number {
-    const sumTotal = (invoiceAmount, nextItem) => invoiceAmount + nextItem.totalPrice;
-    let totalBranch = request.reduce(sumTotal, 0);
-    return totalBranch
-  }
+  // calcRequest(request: any[]): number {
+  //   const sumTotal = (invoiceAmount, nextItem) => invoiceAmount + nextItem.totalPrice;
+  //   let totalBranch = request.reduce(sumTotal, 0);
+  //   return totalBranch
+  // }
 
-  calcTotal(branches: any[]) {
-    const request = branches.map((branch) => branch.request);
-    request.forEach((req, index) => {
-      const sumTotal = (invoiceAmount, nextItem) => invoiceAmount + nextItem.totalPrice;
-      let totalBranch = req.reduce(sumTotal, 0);
-      branches[index].totalBranch = totalBranch
-    })
-    this.dataFinal = branches
-    console.log(this.dataFinal);
-  }
+  // calcTotal(branches: any[]) {
+  //   const request = branches.map((branch) => branch.request);
+  //   request.forEach((req, index) => {
+  //     const sumTotal = (invoiceAmount, nextItem) => invoiceAmount + nextItem.totalPrice;
+  //     let totalBranch = req.reduce(sumTotal, 0);
+  //     branches[index].totalBranch = totalBranch
+  //   })
+  //   this.dataFinal = branches
+  //   console.log(this.dataFinal);
+  // }
 
   // deleteCar() {
   //   console.log('eliminar plato');
   //   localStorage.removeItem('undefined');
   // }
-  deleteCarAll() {
-    console.log('vaciar todo el carrito');
-    localStorage.clear();
-    this.ngOnInit();
-    this.cartService.changeCart(false)
-  }
-  total() {
-    console.log('pagar total');
-  }
+  // deleteCarAll() {
+  //   console.log('vaciar todo el carrito');
+  //   localStorage.clear();
+  //   this.ngOnInit();
+  //   this.cartService.changeCart(false)
+  // }
+  // total() {
+  //   console.log('pagar total');
+  // }
 }
+

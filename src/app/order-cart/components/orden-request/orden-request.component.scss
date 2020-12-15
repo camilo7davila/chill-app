@@ -1,0 +1,20 @@
+@import "../../../../assets/styles/mixins/mixin.scss";
+@import "../../../../assets/styles/theme/variables.scss";
+
+main {
+    min-height: calc(100vh - 64px - 80px);
+}
+button {
+    @include font-style($c-white-gray, "$f-avenir", 2rem, normal, capitalize);
+    background-image: linear-gradient(to left, #ff530d, $c-chill-red);
+    padding: 2px !important;
+    border-radius: 5px;
+    height: 40px;
+}
+.button {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}

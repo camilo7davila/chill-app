@@ -16,7 +16,7 @@
       <mat-icon>how_to_reg</mat-icon>
     </a>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item >{{'Hola, '}}{{UserLogin?.name || 'Sin usuario'}}  </button>
+      <button mat-menu-item>{{'Hola, '}}{{UserLogin?.name || 'Sin usuario'}} </button>
       <button mat-menu-item> Agregar datos </button>
       <button mat-menu-item (click)="closeSesion()">Cerrar sesión</button>
     </mat-menu>

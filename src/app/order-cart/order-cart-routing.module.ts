@@ -10,7 +10,8 @@ const routes: Routes = [
     component: OrderCartComponent
   },
    {
-     path: 'orden',
+     path: 'orden/:id',
+    //  path: 'orden',
      component: OrdenRequestComponent
    },
 ];
